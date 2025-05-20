@@ -1,0 +1,14 @@
+# Ignore Unity's internal folders and files
+Assets/
+Library/
+Temp/
+
+# Ignore Unity's generated files
+*.pidb
+*.csproj.user
+
+# Ignore NuGet packages
+packages*.dll
+*.exe
+*.pdb
+*.symbols*
