@@ -2,7 +2,7 @@
 
 A 2D platformer adventure where you explore mysterious caves, battle mobs, and uncover secrets in a world shrouded in twilight.
 
-![Gameplay Screenshot](<img width="1167" alt="Screenshot 2025-05-21 at 10 32 17 PM" src="https://github.com/user-attachments/assets/ac350f1c-ef2f-4f19-97c8-4cc39bb286a3" />)
+![Gameplay Screenshot](Assets/Screenshots/alpha-image.png)
 
 ## Table of Contents
 - [About](#about)
