@@ -71,3 +71,6 @@ Desktop.ini
 # Visual Studio Code
 .vscode/
 *.code-workspace
+
+# Ignore 2D Parallax Background assets
+Assets/2D Parallax Background/
