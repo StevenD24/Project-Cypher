@@ -2,7 +2,7 @@
 
 A 2D platformer adventure where you explore mysterious caves, battle mobs, and uncover secrets in a world shrouded in twilight.
 
-![Gameplay Screenshot](./screenshots/alpha-image.png)
+![Gameplay Screenshot](<img width="1167" alt="Screenshot 2025-05-21 at 10 32 17 PM" src="https://github.com/user-attachments/assets/ac350f1c-ef2f-4f19-97c8-4cc39bb286a3" />)
 
 ## Table of Contents
 - [About](#about)
@@ -35,7 +35,7 @@ A 2D platformer adventure where you explore mysterious caves, battle mobs, and u
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/shadow-cavern.git
+   git clone https://github.com/stevend24/lunar-veil.git
    ```
 2. **Open the project in Unity (recommended version: 2021.3 or later).**
 3. **Press Play to start the game in the Unity Editor.**
