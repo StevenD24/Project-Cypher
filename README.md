@@ -2,6 +2,8 @@
 
 A 2D platformer adventure where you explore mysterious caves, battle mobs, and uncover secrets in a world shrouded in twilight.
 
+### This game is still under active development!
+
 ![Gameplay Screenshot](Assets/Screenshots/alpha-image.png)
 
 ## Table of Contents
@@ -14,8 +16,6 @@ A 2D platformer adventure where you explore mysterious caves, battle mobs, and u
 ## About
 
 **Lunar Veil** is a 2D platformer game built with Unity. You play as a mysterious wanderer navigating treacherous caves, avoiding deadly spikes, and fighting off hostile mobs. The game features atmospheric visuals, tight controls, and challenging platforming action.
-
-**This game is still under active development!**
 
 ## Features
 
