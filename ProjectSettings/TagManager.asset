@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bonus Bottle
   - Health Potion
+  - Coin
   layers:
   - Default
   - TransparentFX
