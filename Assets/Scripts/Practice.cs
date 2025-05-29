@@ -62,7 +62,7 @@ public class Practice : MonoBehaviour
         Destroy(collision.gameObject, 2f);
     }
 
-    private void OnTriggerEnter2D(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {   
         Debug.Log("We collided with the circle");
     }
