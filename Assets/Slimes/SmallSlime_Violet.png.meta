@@ -1,0 +1,1355 @@
+fileFormatVersion: 2
+guid: ae12a348640cd4fd6985d5b556fadcba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -683947136667545124
+    second: SmallSlime_Violet_0
+  - first:
+      213: -7933249902136105059
+    second: SmallSlime_Violet_1
+  - first:
+      213: -5294151600432493942
+    second: SmallSlime_Violet_2
+  - first:
+      213: 8523659695241448259
+    second: SmallSlime_Violet_3
+  - first:
+      213: -4654497482250307472
+    second: SmallSlime_Violet_4
+  - first:
+      213: 8953474104193032335
+    second: SmallSlime_Violet_5
+  - first:
+      213: -1436596396195930261
+    second: SmallSlime_Violet_6
+  - first:
+      213: 779864168057221
+    second: SmallSlime_Violet_7
+  - first:
+      213: -7490762642024675961
+    second: SmallSlime_Violet_8
+  - first:
+      213: -4652397864395580750
+    second: SmallSlime_Violet_9
+  - first:
+      213: -6207347387354857090
+    second: SmallSlime_Violet_10
+  - first:
+      213: 1661985320012796613
+    second: SmallSlime_Violet_11
+  - first:
+      213: 3818558619433531573
+    second: SmallSlime_Violet_12
+  - first:
+      213: 8155670293730437596
+    second: SmallSlime_Violet_13
+  - first:
+      213: 2539629686428659578
+    second: SmallSlime_Violet_14
+  - first:
+      213: -8737799401907180166
+    second: SmallSlime_Violet_15
+  - first:
+      213: -1915487261635600120
+    second: SmallSlime_Violet_16
+  - first:
+      213: 61368342699112645
+    second: SmallSlime_Violet_17
+  - first:
+      213: -4337451568188931611
+    second: SmallSlime_Violet_18
+  - first:
+      213: 6768656439315012404
+    second: SmallSlime_Violet_19
+  - first:
+      213: 7270903258733968435
+    second: SmallSlime_Violet_20
+  - first:
+      213: 3573380672279804663
+    second: SmallSlime_Violet_21
+  - first:
+      213: 9054239512145607865
+    second: SmallSlime_Violet_22
+  - first:
+      213: 2661130970873022296
+    second: SmallSlime_Violet_23
+  - first:
+      213: -1754988716845803500
+    second: SmallSlime_Violet_24
+  - first:
+      213: -1083778143720649345
+    second: SmallSlime_Violet_25
+  - first:
+      213: -2131150182800447127
+    second: SmallSlime_Violet_26
+  - first:
+      213: 6570263623730216245
+    second: SmallSlime_Violet_27
+  - first:
+      213: -5534723570081569751
+    second: SmallSlime_Violet_28
+  - first:
+      213: -6343856560984346467
+    second: SmallSlime_Violet_29
+  - first:
+      213: -3517884671687992004
+    second: SmallSlime_Violet_30
+  - first:
+      213: -6003575854214284747
+    second: SmallSlime_Violet_31
+  - first:
+      213: 2950941686165323571
+    second: SmallSlime_Violet_32
+  - first:
+      213: 2166380922846566410
+    second: SmallSlime_Violet_33
+  - first:
+      213: -6253419307666559513
+    second: SmallSlime_Violet_34
+  - first:
+      213: -5028839569051812039
+    second: SmallSlime_Violet_35
+  - first:
+      213: 6237892228133482197
+    second: SmallSlime_Violet_36
+  - first:
+      213: 1231110828097534917
+    second: SmallSlime_Violet_37
+  - first:
+      213: 3856580729550636729
+    second: SmallSlime_Violet_38
+  - first:
+      213: -5118949266267269942
+    second: SmallSlime_Violet_39
+  - first:
+      213: 4475683855993739067
+    second: SmallSlime_Violet_40
+  - first:
+      213: 1690905620885763261
+    second: SmallSlime_Violet_41
+  - first:
+      213: 4011386469516321550
+    second: SmallSlime_Violet_42
+  - first:
+      213: 8459283030080529861
+    second: SmallSlime_Violet_43
+  - first:
+      213: 941017017376491703
+    second: SmallSlime_Violet_44
+  - first:
+      213: 101343114134985954
+    second: SmallSlime_Violet_45
+  - first:
+      213: -4998477467712526063
+    second: SmallSlime_Violet_46
+  - first:
+      213: -4715926427157202239
+    second: SmallSlime_Violet_47
+  - first:
+      213: 6667352419308389093
+    second: SmallSlime_Violet_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SmallSlime_Violet_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1574
+        width: 186
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd119c1f3b12286f0800000000000000
+      internalID: -683947136667545124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_1
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1575
+        width: 191
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9766c40f3f67e190800000000000000
+      internalID: -7933249902136105059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_2
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1575
+        width: 195
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ac7254b256786b0800000000000000
+      internalID: -5294151600432493942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_3
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 1575
+        width: 191
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34b4e21255f1a4670800000000000000
+      internalID: 8523659695241448259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_4
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 1276
+        width: 224
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07835825337e76fb0800000000000000
+      internalID: -4654497482250307472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_5
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 1411
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f80a51e9241214c70800000000000000
+      internalID: 8953474104193032335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_6
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 1275
+        width: 200
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6f9227603f201ce0800000000000000
+      internalID: -1436596396195930261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_7
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1393
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 589c5b64845c20000800000000000000
+      internalID: 779864168057221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_8
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1382
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7854a5990177b0890800000000000000
+      internalID: -7490762642024675961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_9
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1346
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba5ae2bacc5f6fb0800000000000000
+      internalID: -4652397864395580750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_10
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1290
+        width: 119
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e71c34b60721bd9a0800000000000000
+      internalID: -6207347387354857090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_11
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 1347
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c2d64dc7de801710800000000000000
+      internalID: 1661985320012796613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_12
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 1362
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b8775135de3ef430800000000000000
+      internalID: 3818558619433531573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_13
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1335
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd9220bebe2ce2170800000000000000
+      internalID: 8155670293730437596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_14
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1332
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7fed988eb39e3320800000000000000
+      internalID: 2539629686428659578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_15
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1294
+        width: 42
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7da3b22db91db680800000000000000
+      internalID: -8737799401907180166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_16
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1303
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 801ac66fb72da65e0800000000000000
+      internalID: -1915487261635600120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_17
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1290
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c8f80bbe260ad000800000000000000
+      internalID: 61368342699112645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_18
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1291
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e143af87c64ec3c0800000000000000
+      internalID: -4337451568188931611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_19
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 1300
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43b18007b291fed50800000000000000
+      internalID: 6768656439315012404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_20
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 1292
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33c711dadff67e460800000000000000
+      internalID: 7270903258733968435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_21
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 954
+        width: 165
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fafb72f9c2379130800000000000000
+      internalID: 3573380672279804663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_22
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 957
+        width: 170
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bcbeb86dde17ad70800000000000000
+      internalID: 9054239512145607865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_23
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 960
+        width: 174
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8574dabc48c3ee420800000000000000
+      internalID: 2661130970873022296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_24
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 957
+        width: 170
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41856937f0705a7e0800000000000000
+      internalID: -1754988716845803500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_25
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 648
+        width: 163
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7dc2383585a5f0f0800000000000000
+      internalID: -1083778143720649345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_26
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 660
+        width: 160
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 969ab273332ac62e0800000000000000
+      internalID: -2131150182800447127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_27
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 781
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53d3c1d74f34e2b50800000000000000
+      internalID: 6570263623730216245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_28
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 771
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9246e4bbc36b033b0800000000000000
+      internalID: -5534723570081569751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_29
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 780
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d903f78a11816f7a0800000000000000
+      internalID: -6343856560984346467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_30
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 663
+        width: 131
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3dde379786fd2fc0800000000000000
+      internalID: -3517884671687992004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_31
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 728
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53af173a1930faca0800000000000000
+      internalID: -6003575854214284747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_32
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 673
+        width: 92
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33fb6cc24d9d3f820800000000000000
+      internalID: 2950941686165323571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_33
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 717
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08d37aa8f7801e10800000000000000
+      internalID: 2166380922846566410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_34
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 696
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed27fe85446739a0800000000000000
+      internalID: -6253419307666559513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_35
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 334
+        width: 165
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ffc3e4e09f53ab0800000000000000
+      internalID: -5028839569051812039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_36
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 337
+        width: 170
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dee0158ee1719650800000000000000
+      internalID: 6237892228133482197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_37
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 340
+        width: 174
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cbf3e386c8c51110800000000000000
+      internalID: 1231110828097534917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_38
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 337
+        width: 170
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b68b709db3558530800000000000000
+      internalID: 3856580729550636729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_39
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 28
+        width: 163
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac494e083c6d5f8b0800000000000000
+      internalID: -5118949266267269942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_40
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 40
+        width: 160
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37157bf0c2dc1e30800000000000000
+      internalID: 4475683855993739067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_41
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 151
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db47b9114bd477710800000000000000
+      internalID: 1690905620885763261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_42
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 161
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e032454adbe4ba730800000000000000
+      internalID: 4011386469516321550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_43
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 160
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5a07eb819656570800000000000000
+      internalID: 8459283030080529861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_44
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 108
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b8c258ddf92f0d00800000000000000
+      internalID: 941017017376491703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_45
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 43
+        width: 131
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec927e760b086100800000000000000
+      internalID: 101343114134985954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_46
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 97
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1196337e937d1aab0800000000000000
+      internalID: -4998477467712526063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_47
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 53
+        width: 92
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cafa6a86e9ad8eb0800000000000000
+      internalID: -4715926427157202239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallSlime_Violet_48
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 76
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2c73143b1378c50800000000000000
+      internalID: 6667352419308389093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

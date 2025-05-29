@@ -1,0 +1,1455 @@
+fileFormatVersion: 2
+guid: a2c48f9c485814c8e8a9a75f7c434b88
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 828803201833627155
+    second: MediumSlime_Yellow_0
+  - first:
+      213: 5959489811878480270
+    second: MediumSlime_Yellow_1
+  - first:
+      213: 2474182712640908577
+    second: MediumSlime_Yellow_2
+  - first:
+      213: -4046544629130034107
+    second: MediumSlime_Yellow_3
+  - first:
+      213: -8931774897489061614
+    second: MediumSlime_Yellow_4
+  - first:
+      213: 4024480136123195070
+    second: MediumSlime_Yellow_5
+  - first:
+      213: 6811490126542155226
+    second: MediumSlime_Yellow_6
+  - first:
+      213: 4296156351322573392
+    second: MediumSlime_Yellow_7
+  - first:
+      213: 3927547036739469684
+    second: MediumSlime_Yellow_8
+  - first:
+      213: 1822878349793890070
+    second: MediumSlime_Yellow_9
+  - first:
+      213: -4758464306529299643
+    second: MediumSlime_Yellow_10
+  - first:
+      213: 813396061065944522
+    second: MediumSlime_Yellow_11
+  - first:
+      213: -1178437535454366134
+    second: MediumSlime_Yellow_12
+  - first:
+      213: -2106569322436192551
+    second: MediumSlime_Yellow_13
+  - first:
+      213: 8769177716697354918
+    second: MediumSlime_Yellow_14
+  - first:
+      213: 600933523307491688
+    second: MediumSlime_Yellow_15
+  - first:
+      213: 4433825382453414888
+    second: MediumSlime_Yellow_16
+  - first:
+      213: -2629887937930472214
+    second: MediumSlime_Yellow_17
+  - first:
+      213: 1956938223250237973
+    second: MediumSlime_Yellow_18
+  - first:
+      213: 2886360231116574813
+    second: MediumSlime_Yellow_19
+  - first:
+      213: 4075670751793670920
+    second: MediumSlime_Yellow_20
+  - first:
+      213: 8365943839419204103
+    second: MediumSlime_Yellow_21
+  - first:
+      213: 7911571361405287824
+    second: MediumSlime_Yellow_22
+  - first:
+      213: 7234731003835324874
+    second: MediumSlime_Yellow_23
+  - first:
+      213: -4827415339609188302
+    second: MediumSlime_Yellow_24
+  - first:
+      213: -7569340231138261896
+    second: MediumSlime_Yellow_25
+  - first:
+      213: 8156936412721738346
+    second: MediumSlime_Yellow_26
+  - first:
+      213: 9031678684299096869
+    second: MediumSlime_Yellow_27
+  - first:
+      213: 6643932721422254471
+    second: MediumSlime_Yellow_28
+  - first:
+      213: -6179058975748669158
+    second: MediumSlime_Yellow_29
+  - first:
+      213: 3570900955237945457
+    second: MediumSlime_Yellow_30
+  - first:
+      213: -7115476107501866534
+    second: MediumSlime_Yellow_31
+  - first:
+      213: -9015182745229078772
+    second: MediumSlime_Yellow_32
+  - first:
+      213: -1733416712991822372
+    second: MediumSlime_Yellow_33
+  - first:
+      213: -217800765704490499
+    second: MediumSlime_Yellow_34
+  - first:
+      213: 2722251525776607792
+    second: MediumSlime_Yellow_35
+  - first:
+      213: 2302264711580757869
+    second: MediumSlime_Yellow_36
+  - first:
+      213: -8869563456860786689
+    second: MediumSlime_Yellow_37
+  - first:
+      213: -1499365546061014891
+    second: MediumSlime_Yellow_38
+  - first:
+      213: -1847913113511140394
+    second: MediumSlime_Yellow_39
+  - first:
+      213: 9052967781740493124
+    second: MediumSlime_Yellow_40
+  - first:
+      213: -1379425967429267382
+    second: MediumSlime_Yellow_41
+  - first:
+      213: -5998038837878841351
+    second: MediumSlime_Yellow_42
+  - first:
+      213: -8580353489074777149
+    second: MediumSlime_Yellow_43
+  - first:
+      213: -8738686168295144117
+    second: MediumSlime_Yellow_44
+  - first:
+      213: -4934612144188589388
+    second: MediumSlime_Yellow_45
+  - first:
+      213: 4666459852625683024
+    second: MediumSlime_Yellow_46
+  - first:
+      213: -8919412298287145692
+    second: MediumSlime_Yellow_47
+  - first:
+      213: -8966984037341566713
+    second: MediumSlime_Yellow_48
+  - first:
+      213: 26234267787650313
+    second: MediumSlime_Yellow_49
+  - first:
+      213: -7914237967000351107
+    second: MediumSlime_Yellow_50
+  - first:
+      213: 1544017712582604317
+    second: MediumSlime_Yellow_51
+  - first:
+      213: -4296697747140779261
+    second: MediumSlime_Yellow_52
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 1570
+        width: 222
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31eeff1fe10808b00800000000000000
+      internalID: 828803201833627155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_1
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1572
+        width: 228
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e89839fb86c54b250800000000000000
+      internalID: 5959489811878480270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_2
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 1574
+        width: 237
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12daf508110165220800000000000000
+      internalID: 2474182712640908577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_3
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 1572
+        width: 228
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54480fc6919c7d7c0800000000000000
+      internalID: -4046544629130034107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_4
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1265
+        width: 206
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219d965ad06fb0480800000000000000
+      internalID: -8931774897489061614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_5
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1266
+        width: 177
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe1d377c53d9d730800000000000000
+      internalID: 4024480136123195070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_6
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1430
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add20a76e26478e50800000000000000
+      internalID: 6811490126542155226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_7
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 1439
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ace1480730f9b30800000000000000
+      internalID: 4296156351322573392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_8
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1396
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4718e7b8833718630800000000000000
+      internalID: 3927547036739469684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_9
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1276
+        width: 167
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61f073c733a2c4910800000000000000
+      internalID: 1822878349793890070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_10
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1411
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54312f4bce986fdb0800000000000000
+      internalID: -4758464306529299643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_11
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1410
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acd99817863c94b00800000000000000
+      internalID: 813396061065944522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_12
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 1406
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46714d1e4955afe0800000000000000
+      internalID: -1178437535454366134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_13
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 1421
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d69471cc56f3c2e0800000000000000
+      internalID: -2106569322436192551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_14
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1422
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a254081ca062b970800000000000000
+      internalID: 8769177716697354918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1379
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 861fd560bd1f65800800000000000000
+      internalID: 600933523307491688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_16
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1384
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eb0f35a1bc188d30800000000000000
+      internalID: 4433825382453414888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_17
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1286
+        width: 96
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4d19caad2c08bd0800000000000000
+      internalID: -2629887937930472214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_18
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1378
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ae63c12f0782b10800000000000000
+      internalID: 1956938223250237973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_19
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1370
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50948d66596e0820800000000000000
+      internalID: 2886360231116574813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_20
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1346
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b6c1674f0bf8830800000000000000
+      internalID: 4075670751793670920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 955
+        width: 217
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7020377e89dc91470800000000000000
+      internalID: 8365943839419204103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_22
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 959
+        width: 221
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d37b36c3c8bcd60800000000000000
+      internalID: 7911571361405287824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_23
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 961
+        width: 225
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac91c19448de66460800000000000000
+      internalID: 7234731003835324874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_24
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 959
+        width: 221
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 238925b4353910db0800000000000000
+      internalID: -4827415339609188302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_25
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 652
+        width: 206
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8744ee2f92d44f690800000000000000
+      internalID: -7569340231138261896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_26
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 839
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a627ab73372433170800000000000000
+      internalID: 8156936412721738346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_27
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 848
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5237d1759e7f65d70800000000000000
+      internalID: 9031678684299096869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_28
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 768
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 781c7fbeb9df33c50800000000000000
+      internalID: 6643932721422254471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_29
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 658
+        width: 168
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11cf4089929f3aa0800000000000000
+      internalID: -6179058975748669158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_30
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 759
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1709f05df736e8130800000000000000
+      internalID: 3570900955237945457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_31
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 658
+        width: 114
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad1729cfd20c04d90800000000000000
+      internalID: -7115476107501866534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_32
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 663
+        width: 93
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0fc365ce03a3e280800000000000000
+      internalID: -9015182745229078772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_33
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 767
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdda56efeaaa1f7e0800000000000000
+      internalID: -1733416712991822372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_34
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 682
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df130688b573afcf0800000000000000
+      internalID: -217800765704490499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_35
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 696
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03a0e2fe65167c520800000000000000
+      internalID: 2722251525776607792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_36
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 664
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6f20b8ae8943ff10800000000000000
+      internalID: 2302264711580757869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_37
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 335
+        width: 217
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fffe609670bf8e480800000000000000
+      internalID: -8869563456860786689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_38
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 339
+        width: 221
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 598d296dafe213be0800000000000000
+      internalID: -1499365546061014891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_39
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 341
+        width: 225
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d3e16d50d4ea56e0800000000000000
+      internalID: -1847913113511140394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_40
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 339
+        width: 221
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 449b2b99b3a92ad70800000000000000
+      internalID: 9052967781740493124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_41
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 32
+        width: 206
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a40dd61246b4bdce0800000000000000
+      internalID: -1379425967429267382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_42
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 219
+        width: 33
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ff1c37b47fa2cca0800000000000000
+      internalID: -5998038837878841351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_43
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 228
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c31a6c56f57ce880800000000000000
+      internalID: -8580353489074777149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_44
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 38
+        width: 168
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b45062fba33f9b680800000000000000
+      internalID: -8738686168295144117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_45
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 148
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba7f49466cb48bb0800000000000000
+      internalID: -4934612144188589388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_46
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 38
+        width: 114
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0522062138892c040800000000000000
+      internalID: 4666459852625683024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_47
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 139
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42d185395c1e73480800000000000000
+      internalID: -8919412298287145692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_48
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 147
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70968a3f68fde8380800000000000000
+      internalID: -8966984037341566713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_49
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 43
+        width: 93
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 905ec647de33d5000800000000000000
+      internalID: 26234267787650313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_50
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 62
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ec80d108afa2290800000000000000
+      internalID: -7914237967000351107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_51
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 76
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d16b565dde37d6510800000000000000
+      internalID: 1544017712582604317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MediumSlime_Yellow_52
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 44
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303e372f9201f54c0800000000000000
+      internalID: -4296697747140779261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
