@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickups : MonoBehaviour
 {
     public int coinScore = 0;
     public GameObject cfxr3HitLightEffect;
+    public Text scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() { }
+    void Start() {
+        scoreText.text="Score: 0";
+     }
 
     // Update is called once per frame
     void Update() { }
@@ -16,6 +20,7 @@ public class Pickups : MonoBehaviour
         if (collision.gameObject.tag == "Coin")
         {
             coinScore++;
+            scoreText.text = "Score: " + coinScore;
             Debug.Log("Coins collected: " + coinScore);
 
             // Play CFXR3 Hit Light B effect at Player's position
