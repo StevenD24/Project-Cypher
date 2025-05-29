@@ -4,7 +4,7 @@ A 2D platformer adventure where you explore mysterious caves, battle mobs, and u
 
 ### This game is still under active development!
 
-![Gameplay Screenshot](Assets/Screenshots/alpha-image.png)
+![Gameplay Screenshot](Assets/Screenshots/alpha-image-v2.png)
 
 ## Table of Contents
 - [About](#about)
