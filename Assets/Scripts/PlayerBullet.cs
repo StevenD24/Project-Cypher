@@ -9,6 +9,8 @@ public class PlayerBullet : MonoBehaviour
     private Player playerController;
     private GameObject playerObject;
 
+    public GameObject hitEffect;
+
     private void Awake()
     {
         Destroy(gameObject, 2f);
@@ -38,5 +40,30 @@ public class PlayerBullet : MonoBehaviour
     {
         // Use the stored direction, don't check player direction again
         rb.linearVelocity = bulletDirection * bulletSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {   
+            Instantiate(hitEffect, collision.transform.position, collision.transform.rotation);
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.takeDamage();
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Only destroy if hitting ground, walls, or other solid objects
+        // Don't destroy if hitting the player
+        if (collision.gameObject.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }
