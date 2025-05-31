@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 68765d262e2128e4ab49c983f3411946
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Runtime/spine-unity.asmdef
+  uploadId: 400075

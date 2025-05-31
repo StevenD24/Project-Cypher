@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 9fc20d5e917562341a5007777a9d0db2
+timeCreated: 1571763023
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Runtime/spine-unity/Components/SkeletonUtility/FollowLocationRigidbody.cs
+  uploadId: 400075

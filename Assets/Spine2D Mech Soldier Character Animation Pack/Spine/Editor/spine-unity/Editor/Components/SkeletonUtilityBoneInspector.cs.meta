@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b3ae20b4bcc31f645afd6f5b64f82473
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Editor/spine-unity/Editor/Components/SkeletonUtilityBoneInspector.cs
+  uploadId: 400075

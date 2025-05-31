@@ -1,0 +1,209 @@
+
+mech_soldier.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Feet_R
+  rotate: false
+  xy: 235, 51
+  size: 67, 44
+  orig: 67, 44
+  offset: 0, 0
+  index: -1
+L_hand
+  rotate: false
+  xy: 246, 10
+  size: 58, 39
+  orig: 60, 41
+  offset: 1, 1
+  index: -1
+R_arm
+  rotate: true
+  xy: 643, 65
+  size: 74, 106
+  orig: 76, 108
+  offset: 1, 1
+  index: -1
+R_elbow
+  rotate: false
+  xy: 873, 86
+  size: 90, 72
+  orig: 92, 74
+  offset: 1, 1
+  index: -1
+R_hand
+  rotate: false
+  xy: 873, 12
+  size: 85, 72
+  orig: 85, 72
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: true
+  xy: 414, 63
+  size: 32, 15
+  orig: 32, 15
+  offset: 0, 0
+  index: -1
+chest
+  rotate: false
+  xy: 847, 160
+  size: 122, 92
+  orig: 124, 94
+  offset: 1, 1
+  index: -1
+cloth_1
+  rotate: false
+  xy: 306, 7
+  size: 307, 51
+  orig: 307, 51
+  offset: 0, 0
+  index: -1
+cloth_back
+  rotate: false
+  xy: 2, 6
+  size: 171, 39
+  orig: 171, 39
+  offset: 0, 0
+  index: -1
+cloth_front
+  rotate: false
+  xy: 403, 186
+  size: 172, 66
+  orig: 172, 66
+  offset: 0, 0
+  index: -1
+eye_BG
+  rotate: false
+  xy: 338, 66
+  size: 27, 29
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+eye_base
+  rotate: false
+  xy: 625, 141
+  size: 45, 45
+  orig: 45, 45
+  offset: 0, 0
+  index: -1
+eye_front
+  rotate: false
+  xy: 304, 60
+  size: 32, 35
+  orig: 32, 35
+  offset: 0, 0
+  index: -1
+eye_glow
+  rotate: false
+  xy: 367, 66
+  size: 24, 29
+  orig: 24, 29
+  offset: 0, 0
+  index: -1
+feet_circle_R
+  rotate: true
+  xy: 403, 163
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+gun
+  rotate: false
+  xy: 127, 163
+  size: 274, 89
+  orig: 276, 91
+  offset: 1, 1
+  index: -1
+gun_light
+  rotate: false
+  xy: 677, 6
+  size: 55, 57
+  orig: 55, 57
+  offset: 0, 0
+  index: -1
+hat
+  rotate: true
+  xy: 2, 47
+  size: 205, 123
+  orig: 205, 123
+  offset: 0, 0
+  index: -1
+hat_back
+  rotate: false
+  xy: 430, 133
+  size: 193, 51
+  orig: 193, 51
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 751, 8
+  size: 149, 120
+  orig: 149, 120
+  offset: 0, 0
+  index: -1
+hip
+  rotate: false
+  xy: 431, 64
+  size: 111, 67
+  orig: 111, 67
+  offset: 0, 0
+  index: -1
+knife
+  rotate: false
+  xy: 577, 188
+  size: 132, 64
+  orig: 134, 66
+  offset: 1, 1
+  index: -1
+leg_R_0
+  rotate: false
+  xy: 615, 3
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+leg_R_1
+  rotate: true
+  xy: 175, 2
+  size: 44, 69
+  orig: 44, 69
+  offset: 0, 0
+  index: -1
+leg_R_2
+  rotate: true
+  xy: 127, 48
+  size: 47, 106
+  orig: 47, 106
+  offset: 0, 0
+  index: -1
+muzzle
+  rotate: false
+  xy: 711, 159
+  size: 134, 93
+  orig: 134, 93
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 127, 97
+  size: 301, 64
+  orig: 301, 64
+  offset: 0, 0
+  index: -1
+spline
+  rotate: false
+  xy: 544, 65
+  size: 97, 66
+  orig: 99, 68
+  offset: 1, 1
+  index: -1
+toe_R
+  rotate: true
+  xy: 393, 69
+  size: 26, 19
+  orig: 26, 19
+  offset: 0, 0
+  index: -1

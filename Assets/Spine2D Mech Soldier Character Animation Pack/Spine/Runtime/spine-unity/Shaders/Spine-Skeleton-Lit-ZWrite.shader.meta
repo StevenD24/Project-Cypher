@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fde05abf1f7be4b4da1caf8c8de1823a
+timeCreated: 1564082883
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Runtime/spine-unity/Shaders/Spine-Skeleton-Lit-ZWrite.shader
+  uploadId: 400075

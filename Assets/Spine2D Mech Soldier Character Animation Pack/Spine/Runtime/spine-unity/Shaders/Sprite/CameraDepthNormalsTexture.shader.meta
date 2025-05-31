@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4794ea6b2d07cc546ba97a809b5f9ada
+timeCreated: 1494092583
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Runtime/spine-unity/Shaders/Sprite/CameraDepthNormalsTexture.shader
+  uploadId: 400075

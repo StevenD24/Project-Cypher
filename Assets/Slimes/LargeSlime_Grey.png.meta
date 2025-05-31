@@ -1522,7 +1522,63 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LargeSlime_Grey_0: 2392822017810781621
+      LargeSlime_Grey_1: 8384074525945943148
+      LargeSlime_Grey_10: -1800095889022495353
+      LargeSlime_Grey_11: -8249571627548931194
+      LargeSlime_Grey_12: -6740039589620887260
+      LargeSlime_Grey_13: -7410772027229035950
+      LargeSlime_Grey_14: 6130092573514636276
+      LargeSlime_Grey_15: 9152825465499209337
+      LargeSlime_Grey_16: -2566093527018956601
+      LargeSlime_Grey_17: 3094715263706108901
+      LargeSlime_Grey_18: 6002132126941500475
+      LargeSlime_Grey_19: -6263178265894194528
+      LargeSlime_Grey_2: 890980969939900375
+      LargeSlime_Grey_20: -9007106007546289345
+      LargeSlime_Grey_21: -6752883350654753745
+      LargeSlime_Grey_22: -8883041728089383364
+      LargeSlime_Grey_23: 1770678219425597476
+      LargeSlime_Grey_24: -8188714866569303007
+      LargeSlime_Grey_25: -7812606869328988824
+      LargeSlime_Grey_26: -8007029587440666716
+      LargeSlime_Grey_27: 2223688505646043174
+      LargeSlime_Grey_28: -8549250817062699131
+      LargeSlime_Grey_29: 1660303720774289630
+      LargeSlime_Grey_3: 973129488513821410
+      LargeSlime_Grey_30: -2446369633734583454
+      LargeSlime_Grey_31: -7598150551151664964
+      LargeSlime_Grey_32: -1913640437870743101
+      LargeSlime_Grey_33: -3437836971328834305
+      LargeSlime_Grey_34: -4018207406576267833
+      LargeSlime_Grey_35: 7001728266383095587
+      LargeSlime_Grey_36: -5531071029997701087
+      LargeSlime_Grey_37: 7402045665819220081
+      LargeSlime_Grey_38: -5034125089971927582
+      LargeSlime_Grey_39: -6296877972364227721
+      LargeSlime_Grey_4: 3618203731904653528
+      LargeSlime_Grey_40: -2058979230625319392
+      LargeSlime_Grey_41: 5093174010673177600
+      LargeSlime_Grey_42: -3461251810548477214
+      LargeSlime_Grey_43: -2406572503468698720
+      LargeSlime_Grey_44: -5423565705194595224
+      LargeSlime_Grey_45: -1909257635454871441
+      LargeSlime_Grey_46: -6895998637980024495
+      LargeSlime_Grey_47: -4221560202999106104
+      LargeSlime_Grey_48: 5509716731900869626
+      LargeSlime_Grey_49: 2019545517708344068
+      LargeSlime_Grey_5: -9146619848076524925
+      LargeSlime_Grey_50: -5726793963881076744
+      LargeSlime_Grey_51: -1727569270262819187
+      LargeSlime_Grey_52: 3862394566155624682
+      LargeSlime_Grey_53: -3597422533073681775
+      LargeSlime_Grey_54: -7170438719163374959
+      LargeSlime_Grey_55: 9022364001919488666
+      LargeSlime_Grey_6: 6659044539844997904
+      LargeSlime_Grey_7: -3203135359198813150
+      LargeSlime_Grey_8: -1725069157306565708
+      LargeSlime_Grey_9: -4275772586784393191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

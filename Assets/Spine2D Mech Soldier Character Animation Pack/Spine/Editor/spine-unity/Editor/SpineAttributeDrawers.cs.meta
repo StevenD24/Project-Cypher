@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f2de282d583d4a641bf1c349f0a3eef9
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Editor/spine-unity/Editor/SpineAttributeDrawers.cs
+  uploadId: 400075

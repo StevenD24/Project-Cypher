@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemy_mana_bar_001_0: 6709604347709411044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

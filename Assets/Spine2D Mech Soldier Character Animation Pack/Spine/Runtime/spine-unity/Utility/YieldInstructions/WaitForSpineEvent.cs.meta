@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: fc166d883db083e469872998172f2d38
+timeCreated: 1449701857
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Runtime/spine-unity/Utility/YieldInstructions/WaitForSpineEvent.cs
+  uploadId: 400075

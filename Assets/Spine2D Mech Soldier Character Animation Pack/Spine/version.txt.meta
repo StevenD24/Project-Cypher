@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80c06a67282e71043a4b1fad3e0c5654
+timeCreated: 1485965987
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/version.txt
+  uploadId: 400075

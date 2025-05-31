@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 670a3cefa3853bd48b5da53a424fd542
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182887
+  packageName: Spine 2D Animation - Mech Soldier Character Animation Pack
+  packageVersion: 1.0
+  assetPath: Assets/Spine2D Mech Soldier Character Animation Pack/Spine/Editor/spine-unity/Editor/Components/BoundingBoxFollowerInspector.cs
+  uploadId: 400075

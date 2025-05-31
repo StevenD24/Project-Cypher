@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RavenmoreIconStack_0: -822930614760869728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

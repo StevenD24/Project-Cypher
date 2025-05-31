@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemy_health_bar_foreground_003_0: -1838608679890838061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
