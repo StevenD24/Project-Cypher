@@ -108,6 +108,13 @@ public class RobotBoss : MonoBehaviour
         return player != null && player.activeInHierarchy;
     }
 
+    private string GetRunAnimation()
+    {
+        // Use tired walk animation when health is below 30%
+        float healthPercentage = (float)currentHealth / maxHealth;
+        return healthPercentage < 0.3f ? walk_2 : run_1;
+    }
+
     private void CalculateDistance()
     {
         // If currently attacking, let the attack finish even if player dies
@@ -183,7 +190,7 @@ public class RobotBoss : MonoBehaviour
                 {
                     Debug.Log("Chasing player!");
                     // Play run animation and move towards player
-                    PlayAnimation(run_1);
+                    PlayAnimation(GetRunAnimation());
                     ChasePlayer();
                 }
             }
@@ -290,7 +297,7 @@ public class RobotBoss : MonoBehaviour
         }
 
         // Wait for attack animation to finish (short duration)
-        float attackAnimationTime = 1.2f; // Attack animation duration
+        float attackAnimationTime = 0.8f; // Attack animation duration
         yield return new WaitForSeconds(attackAnimationTime);
 
         // Switch to idle during cooldown period
@@ -346,7 +353,7 @@ public class RobotBoss : MonoBehaviour
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
-            PlayAnimation(run_1);
+            PlayAnimation(GetRunAnimation());
             ChasePlayer();
             Debug.Log($"Robot took damage - aggroed for {aggroTime} seconds!");
         }
