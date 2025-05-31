@@ -55,6 +55,7 @@ public class RobotBoss : MonoBehaviour
     public float detectingRange = 8f;
     public float timeBetweenAttacks = 2f;
     public float attackRange = 4f;
+    public float aggroTime = 5f; // How long to stay aggro after taking damage
 
     // Spine components
     private SkeletonAnimation skeletonAnimation;
@@ -65,6 +66,8 @@ public class RobotBoss : MonoBehaviour
     private bool isDead = false;
     private bool isMoving = false;
     private bool isAttacking = false;
+    private bool isAggroed = false; // Robot is aggroed and will chase regardless of range
+    private float aggroEndTime = 0f; // When aggro state should end
     private GameObject player;
     private string currentAnimation = "";
     private float lastAttackTime = -999f; // Track when last attack happened
@@ -102,9 +105,16 @@ public class RobotBoss : MonoBehaviour
 
     private void CalculateDistance()
     {
+        // Check if aggro should expire
+        if (isAggroed && Time.time > aggroEndTime)
+        {
+            isAggroed = false;
+            Debug.Log("Aggro expired - returning to normal behavior");
+        }
+
         float distance = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(
-            $"Distance: {distance:F1} | DetectRange: {detectingRange} | AttackRange: {attackRange} | isAttacking: {isAttacking}"
+            $"Distance: {distance:F1} | DetectRange: {detectingRange} | AttackRange: {attackRange} | isAttacking: {isAttacking} | isAggroed: {isAggroed}"
         );
 
         // Don't move while attacking
@@ -114,9 +124,14 @@ public class RobotBoss : MonoBehaviour
             return;
         }
 
-        if (distance < detectingRange)
+        // Robot should chase if player is in range OR if robot is aggroed
+        if (distance < detectingRange || isAggroed)
         {
-            Debug.Log("Player in detect range - should chase!");
+            Debug.Log(
+                isAggroed
+                    ? "Robot is aggroed - chasing regardless of range!"
+                    : "Player in detect range - should chase!"
+            );
 
             // Check if enough time has passed since last attack
             float timeSinceLastAttack = Time.time - lastAttackTime;
@@ -291,6 +306,16 @@ public class RobotBoss : MonoBehaviour
         if (enemyHealthBar != null)
         {
             enemyHealthBar.SetHealth(currentHealth);
+        }
+
+        // Set aggro state when taking damage
+        if (player != null && currentHealth > 0)
+        {
+            isAggroed = true;
+            aggroEndTime = Time.time + aggroTime;
+            PlayAnimation(run_1);
+            ChasePlayer();
+            Debug.Log($"Robot took damage - aggroed for {aggroTime} seconds!");
         }
 
         if (currentHealth <= 0)
