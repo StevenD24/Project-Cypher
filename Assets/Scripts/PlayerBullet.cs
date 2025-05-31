@@ -45,12 +45,26 @@ public class PlayerBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {   
+        {
             Instantiate(hitEffect, collision.transform.position, collision.transform.rotation);
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.takeDamage();
+            }
+
+            Destroy(gameObject);
+        }
+        else if (
+            collision.gameObject.tag == "Boss"
+            || collision.gameObject.GetComponent<RobotBoss>() != null
+        )
+        {
+            Instantiate(hitEffect, collision.transform.position, collision.transform.rotation);
+            RobotBoss robotBoss = collision.GetComponent<RobotBoss>();
+            if (robotBoss != null)
+            {
+                robotBoss.TakeDamage(10); // Adjust damage amount as needed
             }
 
             Destroy(gameObject);
