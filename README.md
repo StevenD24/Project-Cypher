@@ -7,6 +7,7 @@ A 2D platformer adventure where you explore mysterious caves, battle mobs, and u
 ![Gameplay Screenshot v1](Assets/Screenshots/alpha-image-v1.png)
 ![Gameplay Screenshot v2](Assets/Screenshots/alpha-image-v2.png)
 ![Gameplay Screenshot v3](Assets/Screenshots/alpha-image-v3.png)
+![Gameplay Screenshot v4](Assets/Screenshots/alpha-image-v4.png)
 
 ## Table of Contents
 - [About](#about)
