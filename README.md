@@ -1,4 +1,4 @@
-# Lunar Veil
+# Project Cypher
 
 A 2D platformer adventure where you explore mysterious caves, battle mobs, and uncover secrets in a world shrouded in twilight.
 
