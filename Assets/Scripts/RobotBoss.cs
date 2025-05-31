@@ -6,16 +6,22 @@ using UnityEngine;
 public class RobotBoss : MonoBehaviour
 {
     [Header("Movement")]
-    public Transform pointA,
-        pointB;
+    public Transform pointA;
+    public Transform pointB;
     public int speed;
     private Vector3 currentTarget;
 
     [Header("Health & Combat")]
-    public int currentHealth,
-        maxHealth,
-        damageAmount;
+    public int currentHealth;
+    public int maxHealth;
+    public int damageAmount;
     public EnemyHealthBar enemyHealthBar;
+
+    [Header("Detection, Chase & Attack Settings")]
+    public float detectingRange = 8f;
+    public float timeBetweenAttacks = 2f;
+    public float attackRange = 4f;
+    public float aggroTime = 3f; // How long to stay aggro after taking damage
 
     [Header("Spine2D Animations")]
     [SpineAnimation]
@@ -50,12 +56,6 @@ public class RobotBoss : MonoBehaviour
 
     [SpineAnimation]
     public string skill_2 = "shot_skill_continues";
-
-    [Header("Player Detection & Chase")]
-    public float detectingRange = 8f;
-    public float timeBetweenAttacks = 2f;
-    public float attackRange = 4f;
-    public float aggroTime = 3f; // How long to stay aggro after taking damage
 
     // Spine components
     private SkeletonAnimation skeletonAnimation;
@@ -113,6 +113,13 @@ public class RobotBoss : MonoBehaviour
         // Use tired walk animation when health is below 30%
         float healthPercentage = (float)currentHealth / maxHealth;
         return healthPercentage < 0.3f ? walk_2 : run_1;
+    }
+
+    private int GetCurrentSpeed()
+    {
+        // Use speed of 1 when health is below 30%
+        float healthPercentage = (float)currentHealth / maxHealth;
+        return healthPercentage < 0.3f ? 1 : speed;
     }
 
     private void CalculateDistance()
@@ -256,7 +263,7 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Facing left");
         }
 
-        Vector2 movement = direction * speed * Time.deltaTime;
+        Vector2 movement = direction * GetCurrentSpeed() * Time.deltaTime;
         transform.Translate(movement);
         Debug.Log($"Moving by: {movement}, New position: {transform.position.x:F1}");
     }
@@ -362,11 +369,6 @@ public class RobotBoss : MonoBehaviour
         {
             Death();
         }
-    }
-
-    public void takeDamage()
-    {
-        TakeDamage(damageAmount);
     }
 
     public void Death()

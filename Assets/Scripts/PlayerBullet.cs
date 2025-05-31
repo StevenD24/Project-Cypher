@@ -64,7 +64,7 @@ public class PlayerBullet : MonoBehaviour
             RobotBoss robotBoss = collision.GetComponent<RobotBoss>();
             if (robotBoss != null)
             {
-                robotBoss.TakeDamage(10); // Adjust damage amount as needed
+                robotBoss.TakeDamage(robotBoss.damageAmount); // Use robot's own damage amount setting
             }
 
             Destroy(gameObject);
