@@ -174,7 +174,9 @@ public class RobotBoss : MonoBehaviour
                     );
                     if (animation != null)
                     {
-                        spineAnimationState.SetAnimation(0, animationName, true);
+                        // Death animation should not loop, all others should loop
+                        bool shouldLoop = animationName != death;
+                        spineAnimationState.SetAnimation(0, animationName, shouldLoop);
                         currentAnimation = animationName;
                     }
                 }
