@@ -74,3 +74,6 @@ Desktop.ini
 
 # Ignore 2D Parallax Background assets
 Assets/2D Parallax Background/
+
+# Ignore Spine2D Mech Soldier Character Animation Pack assets
+Assets/Spine2D Mech Soldier Character Animation Pack/
