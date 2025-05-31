@@ -55,7 +55,7 @@ public class RobotBoss : MonoBehaviour
     public float detectingRange = 8f;
     public float timeBetweenAttacks = 2f;
     public float attackRange = 4f;
-    public float aggroTime = 5f; // How long to stay aggro after taking damage
+    public float aggroTime = 3f; // How long to stay aggro after taking damage
 
     // Spine components
     private SkeletonAnimation skeletonAnimation;
@@ -103,8 +103,28 @@ public class RobotBoss : MonoBehaviour
         CalculateDistance();
     }
 
+    private bool IsPlayerAlive()
+    {
+        return player != null && player.activeInHierarchy;
+    }
+
     private void CalculateDistance()
     {
+        // If currently attacking, let the attack finish even if player dies
+        if (isAttacking)
+        {
+            Debug.Log("Currently attacking - letting attack finish regardless of player state");
+            return;
+        }
+
+        // Check if player exists and is alive before doing anything
+        if (!IsPlayerAlive())
+        {
+            Debug.Log("Player is null or dead - stopping all actions");
+            PlayAnimation(idle_1);
+            return;
+        }
+
         // Check if aggro should expire
         if (isAggroed && Time.time > aggroEndTime)
         {
@@ -145,8 +165,7 @@ public class RobotBoss : MonoBehaviour
                 Debug.Log(
                     $"Player in attack range - attacking! (Time since last attack: {timeSinceLastAttack:F1}s)"
                 );
-                // Record attack time
-                lastAttackTime = Time.time;
+                // Don't record attack time here - do it at the end of the attack
                 // Stop running and start attack
                 PlayAnimation(skill_1);
                 StartCoroutine(AttackAfterDelay());
@@ -205,6 +224,13 @@ public class RobotBoss : MonoBehaviour
 
     private void ChasePlayer()
     {
+        // Check if player exists and is alive before chasing
+        if (!IsPlayerAlive())
+        {
+            Debug.Log("Player is null or dead - cannot chase");
+            return;
+        }
+
         Vector2 playerPosition = new Vector2(player.transform.position.x, transform.position.y);
         Vector2 direction = (playerPosition - (Vector2)transform.position).normalized;
 
@@ -236,8 +262,8 @@ public class RobotBoss : MonoBehaviour
         // Play attack animation
         PlayAnimation(skill_1);
 
-        // Deal damage to player if still in range
-        if (player != null)
+        // Deal damage to player if still in range and player exists
+        if (IsPlayerAlive())
         {
             float distance = Vector2.Distance(transform.position, player.transform.position);
             if (distance <= attackRange)
@@ -258,9 +284,13 @@ public class RobotBoss : MonoBehaviour
                 Debug.Log("Player moved out of attack range - no damage dealt");
             }
         }
+        else
+        {
+            Debug.Log("Player is null or dead - cannot deal damage");
+        }
 
         // Wait for attack animation to finish (short duration)
-        float attackAnimationTime = 0.8f; // Attack animation duration
+        float attackAnimationTime = 1.2f; // Attack animation duration
         yield return new WaitForSeconds(attackAnimationTime);
 
         // Switch to idle during cooldown period
@@ -277,6 +307,9 @@ public class RobotBoss : MonoBehaviour
 
         isAttacking = false;
         Debug.Log("Attack cooldown finished - ready for next attack");
+
+        // Record attack time at the end so cooldown starts from completion
+        lastAttackTime = Time.time;
     }
 
     // Keep collision damage for when player touches robot
@@ -285,7 +318,7 @@ public class RobotBoss : MonoBehaviour
         if (isDead)
             return;
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && IsPlayerAlive())
         {
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
@@ -309,7 +342,7 @@ public class RobotBoss : MonoBehaviour
         }
 
         // Set aggro state when taking damage
-        if (player != null && currentHealth > 0)
+        if (IsPlayerAlive() && currentHealth > 0)
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;

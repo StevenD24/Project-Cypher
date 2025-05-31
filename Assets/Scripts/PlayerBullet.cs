@@ -56,7 +56,7 @@ public class PlayerBullet : MonoBehaviour
             Destroy(gameObject);
         }
         else if (
-            collision.gameObject.tag == "Boss"
+            collision.gameObject.tag == "RobotBoss"
             || collision.gameObject.GetComponent<RobotBoss>() != null
         )
         {
