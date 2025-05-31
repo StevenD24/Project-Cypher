@@ -247,12 +247,12 @@ public class RobotBoss : MonoBehaviour
 
         if (direction.x > 0)
         {
-            transform.localScale = new Vector3(0.6f, 0.6f, 1);
+            transform.localScale = new Vector3(0.65f, 0.65f, 1);
             Debug.Log("Facing right");
         }
         else if (direction.x < 0)
         {
-            transform.localScale = new Vector3(-0.6f, 0.6f, 1);
+            transform.localScale = new Vector3(-0.65f, 0.65f, 1);
             Debug.Log("Facing left");
         }
 
