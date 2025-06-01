@@ -96,7 +96,6 @@ public class RobotBoss : MonoBehaviour
 
     // State tracking
     private bool isDead = false;
-    private bool isMoving = false;
     private bool isAttacking = false;
     private bool isAggroed = false; // Robot is aggroed and will chase regardless of range
     private float aggroEndTime = 0f; // When aggro state should end
