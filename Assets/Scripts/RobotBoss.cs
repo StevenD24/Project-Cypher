@@ -30,6 +30,16 @@ public class RobotBoss : MonoBehaviour
     public float jumpRange = 15f; // Maximum range for jump attack
     public float jumpCooldown = 5f; // Cooldown between jump attacks
 
+    [Header("Health Thresholds")]
+    public float tiredHealthThreshold = 0.2f; // Health percentage when robot becomes tired (20%)
+
+    [Header("Healing Mechanic")]
+    public GameObject healingEffectPrefab; // Drag your healing effect prefab here
+    public float healingDuration = 3f; // How long the healing state lasts
+    public float healingCooldown = 30f; // Cooldown between healing attempts
+    public float healingDelay = 0.5f; // Delay before entering healing state
+    public int healingAmountPerTick = 10; // Health restored per healing tick
+
     [Header("Spine2D Animations")]
     [SpineAnimation]
     public string idle_1 = "idle";
@@ -42,6 +52,9 @@ public class RobotBoss : MonoBehaviour
 
     [SpineAnimation]
     public string walk_2 = "walk_tired";
+
+    [SpineAnimation]
+    public string flag_meeting = "flag_meeting";
 
     [SpineAnimation]
     public string jump = "jump";
@@ -83,6 +96,10 @@ public class RobotBoss : MonoBehaviour
     private float lastAttackTime = -999f; // Track when last attack happened
     private float lastJumpAttackTime = -999f; // Track when last jump attack happened
     private bool isJumping = false; // Track if currently performing jump attack
+    private bool isHealing = false; // Track if currently in healing state
+    private bool isInvincible = false; // Track if robot is invincible
+    private float lastHealingTime = -999f; // Track when last healing happened
+    private float healingTriggerTime = 0f; // When healing should trigger
 
     void Start()
     {
@@ -122,25 +139,25 @@ public class RobotBoss : MonoBehaviour
 
     private string GetRunAnimation()
     {
-        // Use tired walk animation when health is below 30%
+        // Use tired walk animation when health is below threshold
         float healthPercentage = (float)currentHealth / maxHealth;
-        return healthPercentage < 0.3f ? walk_2 : run_1;
+        return healthPercentage < tiredHealthThreshold ? walk_2 : run_1;
     }
 
     private int GetCurrentSpeed()
     {
-        // Use speed of 1 when health is below 30%
+        // Use speed of 1 when health is below threshold
         float healthPercentage = (float)currentHealth / maxHealth;
-        return healthPercentage < 0.3f ? 1 : speed;
+        return healthPercentage < tiredHealthThreshold ? 1 : speed;
     }
 
     private void CalculateDistance()
     {
-        // If currently attacking, let the attack finish even if player dies
-        if (isAttacking || isJumping)
+        // If currently attacking, jumping, or healing, let the action finish even if player dies
+        if (isAttacking || isJumping || isHealing)
         {
             Debug.Log(
-                "Currently attacking or jumping - letting action finish regardless of player state"
+                "Currently attacking, jumping, or healing - letting action finish regardless of player state"
             );
             return;
         }
@@ -153,8 +170,51 @@ public class RobotBoss : MonoBehaviour
             return;
         }
 
-        // Check for jump attack condition (health below 50% and cooldown has passed)
+        // HIGHEST PRIORITY: Check for healing condition - can interrupt other actions
         float healthPercentage = (float)currentHealth / maxHealth;
+        float timeSinceLastHealing = Time.time - lastHealingTime;
+
+        if (
+            healthPercentage < tiredHealthThreshold
+            && timeSinceLastHealing >= healingCooldown
+            && !isHealing
+        )
+        {
+            // Set trigger time for delayed healing
+            if (healingTriggerTime == 0f)
+            {
+                healingTriggerTime = Time.time + healingDelay;
+                Debug.Log(
+                    $"Healing will trigger in {healingDelay} seconds - prioritizing over combat!"
+                );
+            }
+            // Check if delay has passed
+            else if (Time.time >= healingTriggerTime)
+            {
+                Debug.Log(
+                    $"HEALING PRIORITY ACTIVATED! Health: {healthPercentage:P}, Cooldown: {timeSinceLastHealing:F1}s"
+                );
+                StartCoroutine(PerformHealing());
+                healingTriggerTime = 0f; // Reset trigger time
+                return;
+            }
+            // During healing delay, still idle and don't attack
+            else
+            {
+                Debug.Log(
+                    $"Preparing to heal in {healingTriggerTime - Time.time:F1}s - not attacking"
+                );
+                PlayAnimation(idle_1);
+                return;
+            }
+        }
+        else if (healthPercentage >= tiredHealthThreshold)
+        {
+            // Reset healing trigger if health goes above threshold
+            healingTriggerTime = 0f;
+        }
+
+        // Check for jump attack condition (health below 50% and cooldown has passed)
         float distance = Vector2.Distance(transform.position, player.transform.position);
         float timeSinceLastJump = Time.time - lastJumpAttackTime;
 
@@ -420,6 +480,7 @@ public class RobotBoss : MonoBehaviour
             // Only update target if player is still alive, otherwise keep last known position
             if (IsPlayerAlive())
             {
+                // Always target the ground beneath the player, not the player's Y position
                 targetPosition = new Vector3(
                     player.transform.position.x,
                     originalY,
@@ -445,7 +506,7 @@ public class RobotBoss : MonoBehaviour
             transform.position = newPosition;
 
             Debug.Log(
-                $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}"
+                $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}, Target: Ground beneath player at X:{player.transform.position.x:F1}"
             );
 
             elapsedTime += Time.deltaTime;
@@ -457,13 +518,15 @@ public class RobotBoss : MonoBehaviour
         {
             if (IsPlayerAlive())
             {
-                // If player is alive, land at player's X position
+                // Land on the ground beneath the player's X position
                 transform.position = new Vector3(
                     player.transform.position.x,
                     originalY,
                     transform.position.z
                 );
-                Debug.Log($"Jump completed - Final position: {transform.position}");
+                Debug.Log(
+                    $"Jump completed - Landed on ground beneath player at: {transform.position}"
+                );
             }
             else
             {
@@ -529,6 +592,107 @@ public class RobotBoss : MonoBehaviour
         lastJumpAttackTime = Time.time;
     }
 
+    IEnumerator PerformHealing()
+    {
+        if (isDead)
+            yield break;
+
+        isHealing = true;
+        isInvincible = true;
+        Debug.Log("Starting healing state - robot is now invincible!");
+
+        // Play healing animation
+        PlayAnimation(idle_2);
+
+        // Instantiate healing effect
+        if (healingEffectPrefab != null)
+        {
+            GameObject healingEffect = Instantiate(
+                healingEffectPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+            Debug.Log("Healing effect instantiated!");
+
+            // Optional: Destroy the effect after healing duration
+            Destroy(healingEffect, healingDuration);
+        }
+
+        // Calculate healing intervals (heal every second)
+        float healingInterval = 1f; // Heal every 1 second
+        int totalHealingTicks = Mathf.FloorToInt(healingDuration / healingInterval);
+
+        Debug.Log(
+            $"HEALING PLAN: {totalHealingTicks} ticks over {healingDuration}s, {healingAmountPerTick} HP per tick = {totalHealingTicks * healingAmountPerTick} total HP | Current: {currentHealth}/{maxHealth}"
+        );
+
+        for (int i = 0; i < totalHealingTicks; i++)
+        {
+            // Wait for healing interval
+            yield return new WaitForSeconds(healingInterval);
+
+            // Check if robot died during healing (shouldn't happen due to invincibility)
+            if (isDead)
+            {
+                Debug.Log("Robot died during healing - ending healing state");
+                yield break;
+            }
+
+            // Restore health
+            int healthBefore = currentHealth;
+            int intendedHealing = healingAmountPerTick;
+            int maxPossibleHealing = maxHealth - currentHealth;
+            currentHealth = Mathf.Min(currentHealth + healingAmountPerTick, maxHealth);
+            int actualHealing = currentHealth - healthBefore;
+
+            // Update health bar
+            if (enemyHealthBar != null)
+            {
+                enemyHealthBar.SetHealth(currentHealth);
+            }
+
+            Debug.Log(
+                $"HEALING TICK {i + 1}: Intended: {intendedHealing} HP, Max Possible: {maxPossibleHealing} HP, Actual: {actualHealing} HP | Health: {healthBefore} → {currentHealth}/{maxHealth}"
+            );
+
+            // Stop healing if at max health
+            if (currentHealth >= maxHealth)
+            {
+                Debug.Log("Robot reached max health - healing complete!");
+                break;
+            }
+        }
+
+        // Wait for any remaining time
+        float remainingTime = healingDuration - (totalHealingTicks * healingInterval);
+        if (remainingTime > 0)
+        {
+            yield return new WaitForSeconds(remainingTime);
+        }
+
+        // Check if robot died during healing (shouldn't happen due to invincibility)
+        if (isDead)
+        {
+            Debug.Log("Robot died during healing - ending healing state");
+            yield break;
+        }
+
+        // End healing state
+        isHealing = false;
+        isInvincible = false;
+        Debug.Log("Healing completed - robot is no longer invincible!");
+
+        // Update last healing time for cooldown
+        lastHealingTime = Time.time;
+
+        // Set aggro after healing to continue pursuing player
+        if (IsPlayerAlive())
+        {
+            isAggroed = true;
+            aggroEndTime = Time.time + aggroTime;
+        }
+    }
+
     // Keep collision damage for when player touches robot
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -548,8 +712,14 @@ public class RobotBoss : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isDead)
+        if (isDead || isInvincible)
+        {
+            if (isInvincible)
+            {
+                Debug.Log("Robot is invincible - no damage taken!");
+            }
             return;
+        }
 
         currentHealth -= damage;
 
