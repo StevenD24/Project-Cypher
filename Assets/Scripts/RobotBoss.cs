@@ -590,13 +590,8 @@ public class RobotBoss : MonoBehaviour
                 if (playerHealth != null)
                 {
                     // Deal jump damage as a single hit on landing
-                    int damageDealt = 0;
-                    while (damageDealt < jumpDamage)
-                    {
-                        playerHealth.DealDamage();
-                        damageDealt++;
-                    }
-                    Debug.Log($"Robot landed on player! Dealt {jumpDamage} damage!");
+                    playerHealth.DealDamage();
+                    Debug.Log($"Robot landed on player! Dealt jump damage!");
                 }
             }
             else
@@ -784,6 +779,15 @@ public class RobotBoss : MonoBehaviour
 
         if (collision.gameObject.tag == "Player" && IsPlayerAlive())
         {
+            // Don't deal collision damage during jump attacks - only jump landing damage should apply
+            if (isJumping)
+            {
+                Debug.Log(
+                    "Robot is jumping - skipping collision damage (jump landing damage will apply instead)"
+                );
+                return;
+            }
+
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
