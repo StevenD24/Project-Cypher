@@ -105,6 +105,12 @@ public class RobotBoss : MonoBehaviour
     private float lastHealingTime = -999f; // Track when last healing happened
     private float healingTriggerTime = 0f; // When healing should trigger
 
+    [Header("Ground Detection")]
+    public float groundCheckRadius = 0.3f;
+    public LayerMask groundLayerMask = 1; // Set this to your ground layer
+    private bool isGrounded = false;
+    private Transform groundCheck;
+
     void Start()
     {
         // Initialize Spine2D components
@@ -113,6 +119,15 @@ public class RobotBoss : MonoBehaviour
         {
             spineAnimationState = skeletonAnimation.AnimationState;
             skeleton = skeletonAnimation.Skeleton;
+        }
+
+        // Find GroundCheck child object (just like player)
+        groundCheck = transform.Find("GroundCheck");
+        if (groundCheck == null)
+        {
+            Debug.LogWarning(
+                "GroundCheck child object not found! Please create a GroundCheck child object positioned at the robot's feet."
+            );
         }
 
         // Initialize health
@@ -133,7 +148,26 @@ public class RobotBoss : MonoBehaviour
         if (isDead || player == null)
             return;
 
+        CheckGrounded();
         CalculateDistance();
+    }
+
+    private void CheckGrounded()
+    {
+        if (groundCheck != null)
+        {
+            isGrounded = Physics2D.OverlapCircle(
+                groundCheck.position,
+                groundCheckRadius,
+                groundLayerMask
+            );
+        }
+        else
+        {
+            // Fallback: use robot's position with slight offset downward
+            Vector2 checkPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            isGrounded = Physics2D.OverlapCircle(checkPosition, groundCheckRadius, groundLayerMask);
+        }
     }
 
     private bool IsPlayerAlive()
@@ -326,9 +360,18 @@ public class RobotBoss : MonoBehaviour
                 else
                 {
                     Debug.Log("Chasing player!");
-                    // Play run animation and move towards player
-                    PlayAnimation(GetRunAnimation());
-                    ChasePlayer();
+                    // Only chase if grounded
+                    if (isGrounded)
+                    {
+                        // Play run animation and move towards player
+                        PlayAnimation(GetRunAnimation());
+                        ChasePlayer();
+                    }
+                    else
+                    {
+                        Debug.Log("Robot is in air - cannot chase (playing idle instead)");
+                        PlayAnimation(idle_1);
+                    }
                 }
             }
         }
@@ -408,11 +451,20 @@ public class RobotBoss : MonoBehaviour
             return;
         }
 
+        // Don't move if not grounded
+        if (!isGrounded)
+        {
+            Debug.Log("Robot is not grounded - cannot chase (preventing air running)");
+            // Play idle animation when in air
+            PlayAnimation(idle_1);
+            return;
+        }
+
         Vector2 playerPosition = new Vector2(player.transform.position.x, transform.position.y);
         Vector2 direction = (playerPosition - (Vector2)transform.position).normalized;
 
         Debug.Log(
-            $"Chasing: Robot at {transform.position.x:F1}, Player at {player.transform.position.x:F1}, Direction: {direction.x:F2}"
+            $"Chasing: Robot at {transform.position.x:F1}, Player at {player.transform.position.x:F1}, Direction: {direction.x:F2}, Grounded: {isGrounded}"
         );
 
         if (direction.x > 0)
@@ -656,6 +708,21 @@ public class RobotBoss : MonoBehaviour
         // Brief pause after landing before switching animation
         yield return new WaitForSeconds(0.2f);
 
+        // Wait for robot to be grounded before continuing (prevent air running)
+        float groundCheckTimeout = 2f; // Maximum time to wait for grounding
+        float groundCheckStartTime = Time.time;
+
+        while (!isGrounded && !isDead && (Time.time - groundCheckStartTime) < groundCheckTimeout)
+        {
+            Debug.Log("Waiting for robot to be grounded after jump...");
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (!isGrounded && !isDead)
+        {
+            Debug.LogWarning("Robot never detected ground after jump - continuing anyway");
+        }
+
         // Final check before completing jump - if robot died, don't continue
         if (isDead)
         {
@@ -666,15 +733,24 @@ public class RobotBoss : MonoBehaviour
 
         // Now that we've landed, we can change animations
         isJumping = false;
-        Debug.Log("Jump attack completed - robot has landed!");
+        Debug.Log($"Jump attack completed - robot has landed! Grounded: {isGrounded}");
 
         // Set aggro after jump attack to continue pursuing player
         if (IsPlayerAlive())
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
-            // Now we can safely switch to run animation after landing
-            PlayAnimation(GetRunAnimation());
+
+            // Only switch to run animation if grounded, otherwise stay idle
+            if (isGrounded)
+            {
+                PlayAnimation(GetRunAnimation());
+            }
+            else
+            {
+                Debug.Log("Robot not grounded after jump - staying idle");
+                PlayAnimation(idle_1);
+            }
 
             // Trigger boss music if not already playing
             if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
@@ -934,5 +1010,22 @@ public class RobotBoss : MonoBehaviour
         this.enabled = false;
 
         Destroy(gameObject, 2.0f);
+    }
+
+    // Visual debug for ground check (visible in Scene view)
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = isGrounded ? Color.green : Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+        else
+        {
+            // Show fallback position
+            Vector2 checkPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            Gizmos.color = isGrounded ? Color.green : Color.red;
+            Gizmos.DrawWireSphere(checkPosition, groundCheckRadius);
+        }
     }
 }
