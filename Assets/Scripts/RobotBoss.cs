@@ -23,6 +23,13 @@ public class RobotBoss : MonoBehaviour
     public float attackRange = 4f;
     public float aggroTime = 3f; // How long to stay aggro after taking damage
 
+    [Header("Jump Attack Settings")]
+    public GameObject jumpEffectPrefab; // Drag your jump effect prefab here
+    public float jumpSpeed = 10f;
+    public float jumpDamage = 30f;
+    public float jumpRange = 15f; // Maximum range for jump attack
+    public float jumpCooldown = 5f; // Cooldown between jump attacks
+
     [Header("Spine2D Animations")]
     [SpineAnimation]
     public string idle_1 = "idle";
@@ -35,6 +42,9 @@ public class RobotBoss : MonoBehaviour
 
     [SpineAnimation]
     public string walk_2 = "walk_tired";
+
+    [SpineAnimation]
+    public string jump = "jump";
 
     [SpineAnimation]
     public string run_1 = "run";
@@ -71,6 +81,8 @@ public class RobotBoss : MonoBehaviour
     private GameObject player;
     private string currentAnimation = "";
     private float lastAttackTime = -999f; // Track when last attack happened
+    private float lastJumpAttackTime = -999f; // Track when last jump attack happened
+    private bool isJumping = false; // Track if currently performing jump attack
 
     void Start()
     {
@@ -125,9 +137,11 @@ public class RobotBoss : MonoBehaviour
     private void CalculateDistance()
     {
         // If currently attacking, let the attack finish even if player dies
-        if (isAttacking)
+        if (isAttacking || isJumping)
         {
-            Debug.Log("Currently attacking - letting attack finish regardless of player state");
+            Debug.Log(
+                "Currently attacking or jumping - letting action finish regardless of player state"
+            );
             return;
         }
 
@@ -139,6 +153,32 @@ public class RobotBoss : MonoBehaviour
             return;
         }
 
+        // Check for jump attack condition (health below 50% and cooldown has passed)
+        float healthPercentage = (float)currentHealth / maxHealth;
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        float timeSinceLastJump = Time.time - lastJumpAttackTime;
+
+        if (
+            healthPercentage < 0.5f
+            && timeSinceLastJump >= jumpCooldown
+            && distance <= jumpRange
+            && !isJumping
+            && !isAttacking
+        )
+        {
+            Debug.Log(
+                $"Jump attack triggered! Health: {healthPercentage:P}, Distance: {distance:F1}, Cooldown: {timeSinceLastJump:F1}s, isJumping: {isJumping}"
+            );
+            StartCoroutine(PerformJumpAttack());
+            return;
+        }
+        else if (healthPercentage < 0.5f && timeSinceLastJump < jumpCooldown)
+        {
+            Debug.Log(
+                $"Jump attack on cooldown - Health: {healthPercentage:P}, Need {jumpCooldown - timeSinceLastJump:F1}s more"
+            );
+        }
+
         // Check if aggro should expire
         if (isAggroed && Time.time > aggroEndTime)
         {
@@ -146,7 +186,6 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Aggro expired - returning to normal behavior");
         }
 
-        float distance = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(
             $"Distance: {distance:F1} | DetectRange: {detectingRange} | AttackRange: {attackRange} | isAttacking: {isAttacking} | isAggroed: {isAggroed}"
         );
@@ -338,6 +377,142 @@ public class RobotBoss : MonoBehaviour
 
         // Record attack time at the end so cooldown starts from completion
         lastAttackTime = Time.time;
+    }
+
+    IEnumerator PerformJumpAttack()
+    {
+        if (!IsPlayerAlive() || isDead)
+            yield break;
+
+        isJumping = true;
+        Debug.Log("Starting jump attack!");
+
+        // Store original position and target position (keep same Y level)
+        Vector3 startPosition = transform.position;
+        float originalY = startPosition.y; // Store the original Y position
+        Vector3 targetPosition = new Vector3(
+            player.transform.position.x,
+            originalY,
+            transform.position.z
+        );
+
+        // Face the player
+        Vector2 direction = (targetPosition - startPosition).normalized;
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(0.65f, 0.65f, 1);
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-0.65f, 0.65f, 1);
+        }
+
+        // Play jump animation
+        PlayAnimation(jump);
+
+        // Animate the jump movement
+        float jumpDuration = 1.0f; // Duration of the jump
+        float elapsedTime = 0f;
+
+        while (elapsedTime < jumpDuration && !isDead)
+        {
+            if (!IsPlayerAlive())
+            {
+                Debug.Log("Player died during jump - ending jump attack");
+                break;
+            }
+
+            // Update target position to follow moving player (X only, keep same Y)
+            targetPosition = new Vector3(
+                player.transform.position.x,
+                originalY,
+                transform.position.z
+            );
+
+            // Calculate movement progress
+            float progress = elapsedTime / jumpDuration;
+            // Use easing for more natural jump movement
+            float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
+
+            // Interpolate X position towards target
+            float currentX = Mathf.Lerp(startPosition.x, targetPosition.x, easedProgress);
+
+            // Add a parabolic arc to the Y movement
+            float arcHeight = 2f;
+            float arc = Mathf.Sin(progress * Mathf.PI) * arcHeight;
+            float currentY = originalY + arc; // Always use original Y + arc
+
+            // Set the new position
+            Vector3 newPosition = new Vector3(currentX, currentY, transform.position.z);
+            transform.position = newPosition;
+
+            Debug.Log(
+                $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}"
+            );
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure we end up at the target position (X only, keep original Y)
+        if (!isDead && IsPlayerAlive())
+        {
+            transform.position = new Vector3(
+                player.transform.position.x,
+                originalY,
+                transform.position.z
+            );
+            Debug.Log($"Jump completed - Final position: {transform.position}");
+        }
+
+        // Instantiate landing effect only on landing
+        if (jumpEffectPrefab != null)
+        {
+            Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
+            Debug.Log("Landing effect instantiated!");
+        }
+
+        // Check if robot landed on player and deal damage
+        if (IsPlayerAlive() && !isDead)
+        {
+            float finalDistance = Vector2.Distance(transform.position, player.transform.position);
+            if (finalDistance <= attackRange * 1.5f) // Slightly larger range for jump attack
+            {
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    // Deal jump damage as a single hit on landing
+                    int damageDealt = 0;
+                    while (damageDealt < jumpDamage)
+                    {
+                        playerHealth.DealDamage();
+                        damageDealt++;
+                    }
+                    Debug.Log($"Robot landed on player! Dealt {jumpDamage} damage!");
+                }
+            }
+            else
+            {
+                Debug.Log("Jump attack missed - robot didn't land close enough to player");
+            }
+        }
+
+        // Brief pause after landing
+        yield return new WaitForSeconds(0.5f);
+
+        // Return to normal behavior
+        isJumping = false;
+        Debug.Log("Jump attack completed!");
+
+        // Set aggro after jump attack to continue pursuing player
+        if (IsPlayerAlive())
+        {
+            isAggroed = true;
+            aggroEndTime = Time.time + aggroTime;
+        }
+
+        // Update last jump attack time
+        lastJumpAttackTime = Time.time;
     }
 
     // Keep collision damage for when player touches robot
