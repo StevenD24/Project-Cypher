@@ -416,18 +416,16 @@ public class RobotBoss : MonoBehaviour
 
         while (elapsedTime < jumpDuration && !isDead)
         {
-            if (!IsPlayerAlive())
-            {
-                Debug.Log("Player died during jump - ending jump attack");
-                break;
-            }
-
             // Update target position to follow moving player (X only, keep same Y)
-            targetPosition = new Vector3(
-                player.transform.position.x,
-                originalY,
-                transform.position.z
-            );
+            // Only update target if player is still alive, otherwise keep last known position
+            if (IsPlayerAlive())
+            {
+                targetPosition = new Vector3(
+                    player.transform.position.x,
+                    originalY,
+                    transform.position.z
+                );
+            }
 
             // Calculate movement progress
             float progress = elapsedTime / jumpDuration;
@@ -455,14 +453,26 @@ public class RobotBoss : MonoBehaviour
         }
 
         // Ensure we end up at the target position (X only, keep original Y)
-        if (!isDead && IsPlayerAlive())
+        if (!isDead)
         {
-            transform.position = new Vector3(
-                player.transform.position.x,
-                originalY,
-                transform.position.z
-            );
-            Debug.Log($"Jump completed - Final position: {transform.position}");
+            if (IsPlayerAlive())
+            {
+                // If player is alive, land at player's X position
+                transform.position = new Vector3(
+                    player.transform.position.x,
+                    originalY,
+                    transform.position.z
+                );
+                Debug.Log($"Jump completed - Final position: {transform.position}");
+            }
+            else
+            {
+                // If player died during jump, land at target X position but on ground
+                transform.position = new Vector3(targetPosition.x, originalY, transform.position.z);
+                Debug.Log(
+                    $"Player died during jump - landing at ground level: {transform.position}"
+                );
+            }
         }
 
         // Instantiate landing effect only on landing
@@ -472,7 +482,7 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Landing effect instantiated!");
         }
 
-        // Check if robot landed on player and deal damage
+        // Check if robot landed on player and deal damage AFTER landing
         if (IsPlayerAlive() && !isDead)
         {
             float finalDistance = Vector2.Distance(transform.position, player.transform.position);
@@ -495,6 +505,10 @@ public class RobotBoss : MonoBehaviour
             {
                 Debug.Log("Jump attack missed - robot didn't land close enough to player");
             }
+        }
+        else
+        {
+            Debug.Log("Player not alive or robot died - no damage dealt");
         }
 
         // Brief pause after landing
