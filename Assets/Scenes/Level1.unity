@@ -2397,11 +2397,9 @@ MonoBehaviour:
   damageAmount: 30
   healthBar: {fileID: 107090670}
   immortalTime: 2
-  immortalEffect: {fileID: 0}
   healthPotionIncrement: 1
-  flashSpeed: 8
-  minAlpha: 0.3
-  maxAlpha: 1
+  pulseSpeed: 8
+  tintColor: {r: 1, g: 0.8, b: 0.8, a: 1}
 --- !u!114 &535057898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8191,7 +8189,7 @@ MonoBehaviour:
   flag_meeting: flag_meeting
   jump: jump
   run_1: run
-  run_2: run
+  run_2: skip
   attack: shot_sttack
   getHit: hit
   death: dead
