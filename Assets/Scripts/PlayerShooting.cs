@@ -16,6 +16,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire3") && canShoot)
         {
+            AudioManager.instance.PlaySFX(3);
             Shoot();
         }
     }

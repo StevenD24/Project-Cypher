@@ -128,12 +128,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bonus Bottle")
         {
+            AudioManager.instance.PlaySFX(2);
             immortalCounter = immortalTime + 2;
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Health Potion")
         {
+            AudioManager.instance.PlaySFX(1);
             if (currentHealth < maxHealth)
             {
                 currentHealth += healthPotionIncrement;

@@ -22,6 +22,7 @@ public class Pickups : MonoBehaviour
             coinScore++;
             scoreText.text = "Score: " + coinScore;
             Debug.Log("Coins collected: " + coinScore);
+            AudioManager.instance.PlaySFX(0);
 
             // Play CFXR3 Hit Light B effect at Player's position
             if (cfxr3HitLightEffect != null)
