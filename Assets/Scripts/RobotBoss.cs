@@ -499,7 +499,7 @@ public class RobotBoss : MonoBehaviour
             transform.localScale = new Vector3(-0.65f, 0.65f, 1);
         }
 
-        // Play jump animation
+        // Play jump animation - this should stay active throughout the jump
         PlayAnimation(jump);
 
         // Animate the jump movement
@@ -539,6 +539,13 @@ public class RobotBoss : MonoBehaviour
             // Set the new position
             Vector3 newPosition = new Vector3(currentX, currentY, transform.position.z);
             transform.position = newPosition;
+
+            // Ensure jump animation stays active during the entire jump
+            if (currentAnimation != jump)
+            {
+                PlayAnimation(jump);
+                Debug.Log("Re-applying jump animation to prevent override");
+            }
 
             Debug.Log(
                 $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}, Target: Ground beneath player at X:{player.transform.position.x:F1}"
@@ -590,7 +597,7 @@ public class RobotBoss : MonoBehaviour
                 if (playerHealth != null)
                 {
                     // Deal jump damage as a single hit on landing
-                    playerHealth.DealDamage((int)jumpDamage);
+                    playerHealth.DealDamage((int)jumpDamage); // Use robot's jump damage
                     Debug.Log($"Robot landed on player! Dealt {jumpDamage} jump damage!");
                 }
             }
@@ -604,18 +611,24 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Player not alive or robot died - no damage dealt");
         }
 
-        // Brief pause after landing
-        yield return new WaitForSeconds(0.5f);
+        // Brief pause after landing before switching animation
+        yield return new WaitForSeconds(0.2f);
 
-        // Return to normal behavior
+        // Now that we've landed, we can change animations
         isJumping = false;
-        Debug.Log("Jump attack completed!");
+        Debug.Log("Jump attack completed - robot has landed!");
 
         // Set aggro after jump attack to continue pursuing player
         if (IsPlayerAlive())
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
+            // Now we can safely switch to run animation after landing
+            PlayAnimation(GetRunAnimation());
+        }
+        else
+        {
+            PlayAnimation(idle_1);
         }
 
         // Update last jump attack time
