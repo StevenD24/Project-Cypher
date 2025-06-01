@@ -2,16 +2,99 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("Sound Effects")]
     public AudioSource[] soundEffects;
+
+    [Header("Background Music GameObjects")]
+    public GameObject normalBGMPrefab;
+    public GameObject bossBGMPrefab;
+
     public static AudioManager instance;
+
+    private bool isBossMusicPlaying = false;
+    private GameObject currentMusicObject;
 
     private void Awake()
     {
         instance = this;
     }
 
+    private void Start()
+    {
+        // Start playing normal background music
+        if (normalBGMPrefab != null)
+        {
+            PlayNormalBGM();
+        }
+    }
+
     public void PlaySFX(int soundToPlay)
     {
-        soundEffects[soundToPlay].Play();
+        if (soundToPlay >= 0 && soundToPlay < soundEffects.Length)
+        {
+            soundEffects[soundToPlay].Play();
+        }
+    }
+
+    public void PlayBossBGM()
+    {
+        if (bossBGMPrefab != null && !isBossMusicPlaying)
+        {
+            // Stop and destroy current music
+            if (currentMusicObject != null)
+            {
+                Destroy(currentMusicObject);
+            }
+
+            // Instantiate and play boss music
+            currentMusicObject = Instantiate(bossBGMPrefab);
+            AudioSource bossAudioSource = currentMusicObject.GetComponent<AudioSource>();
+            if (bossAudioSource != null)
+            {
+                bossAudioSource.loop = true;
+                bossAudioSource.Play();
+            }
+
+            isBossMusicPlaying = true;
+            Debug.Log("Boss music started!");
+        }
+    }
+
+    public void PlayNormalBGM()
+    {
+        if (normalBGMPrefab != null)
+        {
+            // Stop and destroy current music
+            if (currentMusicObject != null)
+            {
+                Destroy(currentMusicObject);
+            }
+
+            // Instantiate and play normal music
+            currentMusicObject = Instantiate(normalBGMPrefab);
+            AudioSource normalAudioSource = currentMusicObject.GetComponent<AudioSource>();
+            if (normalAudioSource != null)
+            {
+                normalAudioSource.loop = true;
+                normalAudioSource.Play();
+            }
+
+            isBossMusicPlaying = false;
+            Debug.Log(isBossMusicPlaying ? "Normal music resumed!" : "Normal music started!");
+        }
+    }
+
+    public bool IsBossMusicPlaying()
+    {
+        return isBossMusicPlaying;
+    }
+
+    private void OnDestroy()
+    {
+        // Clean up music object when AudioManager is destroyed
+        if (currentMusicObject != null)
+        {
+            Destroy(currentMusicObject);
+        }
     }
 }

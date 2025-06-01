@@ -171,6 +171,12 @@ public class RobotBoss : MonoBehaviour
         {
             Debug.Log("Player is null or dead - stopping all actions");
             PlayAnimation(idle_1);
+            // Return to normal music if boss was previously aggro
+            if (isAggroed && AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayNormalBGM();
+                isAggroed = false;
+            }
             return;
         }
 
@@ -251,6 +257,12 @@ public class RobotBoss : MonoBehaviour
         {
             isAggroed = false;
             Debug.Log("Aggro expired - returning to normal behavior");
+
+            // Return to normal music when aggro ends
+            if (AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayNormalBGM();
+            }
         }
 
         Debug.Log(
@@ -272,6 +284,17 @@ public class RobotBoss : MonoBehaviour
                     ? "Robot is aggroed - chasing regardless of range!"
                     : "Player in detect range - should chase!"
             );
+
+            // Trigger boss music if not already playing and not already aggro
+            if (
+                !isAggroed
+                && AudioManager.instance != null
+                && !AudioManager.instance.IsBossMusicPlaying()
+            )
+            {
+                AudioManager.instance.PlayBossBGM();
+                Debug.Log("Boss encounter started - playing boss music!");
+            }
 
             // Check if enough time has passed since last attack
             float timeSinceLastAttack = Time.time - lastAttackTime;
@@ -625,6 +648,13 @@ public class RobotBoss : MonoBehaviour
             aggroEndTime = Time.time + aggroTime;
             // Now we can safely switch to run animation after landing
             PlayAnimation(GetRunAnimation());
+
+            // Trigger boss music if not already playing
+            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
+            {
+                AudioManager.instance.PlayBossBGM();
+                Debug.Log("Boss jump attack completed - playing boss music!");
+            }
         }
         else
         {
@@ -746,6 +776,13 @@ public class RobotBoss : MonoBehaviour
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
+
+            // Trigger boss music if not already playing
+            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
+            {
+                AudioManager.instance.PlayBossBGM();
+                Debug.Log("Boss healing completed - playing boss music!");
+            }
         }
     }
 
@@ -831,6 +868,13 @@ public class RobotBoss : MonoBehaviour
         // Set aggro state when taking damage
         if (IsPlayerAlive() && currentHealth > 0)
         {
+            // Trigger boss music if not already playing
+            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
+            {
+                AudioManager.instance.PlayBossBGM();
+                Debug.Log("Boss took damage - playing boss music!");
+            }
+
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
             PlayAnimation(GetRunAnimation());
@@ -851,6 +895,13 @@ public class RobotBoss : MonoBehaviour
 
         isDead = true;
         PlayAnimation(death);
+
+        // Return to normal music when boss dies
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayNormalBGM();
+            Debug.Log("Boss defeated - returning to normal music!");
+        }
 
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
