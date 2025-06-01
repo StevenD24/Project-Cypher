@@ -95,8 +95,8 @@ public class PlayerHealth : MonoBehaviour
                 // Create a smooth pulse using sine wave
                 float pulse = (Mathf.Sin(time * pulseSpeed) + 1f) * 0.5f; // Converts -1,1 to 0,1
 
-                // Very gentle alpha pulse between 85% and 100% opacity
-                float alpha = 0.80f + (pulse * 0.15f); // Alpha from 0.85 to 1.0
+                // Very gentle alpha pulse between 70% and 100% opacity
+                float alpha = 0.70f + (pulse * 0.30f); // Alpha from 0.70 to 1.0
                 Color currentColor = originalColor;
                 currentColor.a = alpha;
                 spriteRenderer.color = currentColor;
