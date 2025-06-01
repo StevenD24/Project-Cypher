@@ -230,7 +230,7 @@ public class RobotBoss : MonoBehaviour
                     Debug.Log(
                         $"Player in attack range but still cooling down (Need {timeBetweenAttacks - timeSinceLastAttack:F1}s more)"
                     );
-                    PlayAnimation(idle_1);
+                    PlayAnimation(idle_2);
                 }
                 else
                 {
@@ -355,7 +355,7 @@ public class RobotBoss : MonoBehaviour
 
         // Switch to idle during cooldown period
         Debug.Log("Attack animation finished - switching to idle for cooldown");
-        PlayAnimation(idle_1);
+        PlayAnimation(idle_2);
 
         // Wait for remaining cooldown time
         float cooldownTime = timeBetweenAttacks - attackAnimationTime;
