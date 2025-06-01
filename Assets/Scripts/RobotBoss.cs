@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Spine;
 using Spine.Unity;
 using UnityEngine;
@@ -29,6 +30,10 @@ public class RobotBoss : MonoBehaviour
     public float jumpDamage = 30f;
     public float jumpRange = 15f; // Maximum range for jump attack
     public float jumpCooldown = 5f; // Cooldown between jump attacks
+    public float jumpAOERadius = 3f; // Inner AOE radius for full jump damage
+    public float jumpOuterAOERadius = 4f; // Outer AOE radius for reduced damage
+    public float jumpOuterDamage = 10f; // Reduced damage for outer AOE
+    public LayerMask playerLayerMask = 1; // Layer mask for player detection
 
     [Header("Health Thresholds")]
     public float tiredHealthThreshold = 0.2f; // Health percentage when robot becomes tired (20%)
@@ -104,6 +109,7 @@ public class RobotBoss : MonoBehaviour
     private bool isInvincible = false; // Track if robot is invincible
     private float lastHealingTime = -999f; // Track when last healing happened
     private float healingTriggerTime = 0f; // When healing should trigger
+    private bool bossEncounterStarted = false; // Track if boss encounter has begun
 
     [Header("Ground Detection")]
     public float groundCheckRadius = 0.3f;
@@ -291,12 +297,7 @@ public class RobotBoss : MonoBehaviour
         {
             isAggroed = false;
             Debug.Log("Aggro expired - returning to normal behavior");
-
-            // Return to normal music when aggro ends
-            if (AudioManager.instance != null)
-            {
-                AudioManager.instance.PlayNormalBGM();
-            }
+            // Note: Don't change music here - boss encounter continues until death
         }
 
         Debug.Log(
@@ -319,14 +320,11 @@ public class RobotBoss : MonoBehaviour
                     : "Player in detect range - should chase!"
             );
 
-            // Trigger boss music if not already playing and not already aggro
-            if (
-                !isAggroed
-                && AudioManager.instance != null
-                && !AudioManager.instance.IsBossMusicPlaying()
-            )
+            // Trigger boss music when encounter starts (only once)
+            if (!bossEncounterStarted && AudioManager.instance != null)
             {
                 AudioManager.instance.PlayBossBGM();
+                bossEncounterStarted = true;
                 Debug.Log("Boss encounter started - playing boss music!");
             }
 
@@ -684,27 +682,72 @@ public class RobotBoss : MonoBehaviour
         }
 
         // Check if robot landed on player and deal damage AFTER landing
-        if (IsPlayerAlive() && !isDead)
+        if (!isDead)
         {
-            float finalDistance = Vector2.Distance(transform.position, player.transform.position);
-            if (finalDistance <= attackRange * 1.5f) // Slightly larger range for jump attack
+            // Two-tier AOE damage system
+            // First check inner circle for full damage
+            Collider2D[] innerTargets = Physics2D.OverlapCircleAll(
+                transform.position,
+                jumpAOERadius,
+                playerLayerMask
+            );
+            // Then check outer circle for reduced damage
+            Collider2D[] outerTargets = Physics2D.OverlapCircleAll(
+                transform.position,
+                jumpOuterAOERadius,
+                playerLayerMask
+            );
+
+            bool playerHit = false;
+
+            // Track which players got hit by inner AOE to avoid double damage
+            HashSet<Collider2D> innerHitTargets = new HashSet<Collider2D>();
+
+            // Inner AOE - Full damage
+            foreach (Collider2D target in innerTargets)
             {
-                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-                if (playerHealth != null)
+                if (target.CompareTag("Player"))
                 {
-                    // Deal jump damage as a single hit on landing
-                    playerHealth.DealDamage((int)jumpDamage); // Use robot's jump damage
-                    Debug.Log($"Robot landed on player! Dealt {jumpDamage} jump damage!");
+                    PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+                    if (playerHealth != null)
+                    {
+                        playerHealth.DealDamage((int)jumpDamage);
+                        innerHitTargets.Add(target);
+                        playerHit = true;
+                        Debug.Log(
+                            $"Robot jump INNER AOE hit player! Dealt {jumpDamage} damage! (Inner Radius: {jumpAOERadius})"
+                        );
+                    }
                 }
             }
-            else
+
+            // Outer AOE - Reduced damage (only for targets not hit by inner AOE)
+            foreach (Collider2D target in outerTargets)
             {
-                Debug.Log("Jump attack missed - robot didn't land close enough to player");
+                if (target.CompareTag("Player") && !innerHitTargets.Contains(target))
+                {
+                    PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+                    if (playerHealth != null)
+                    {
+                        playerHealth.DealDamage((int)jumpOuterDamage);
+                        playerHit = true;
+                        Debug.Log(
+                            $"Robot jump OUTER AOE hit player! Dealt {jumpOuterDamage} damage! (Outer Radius: {jumpOuterAOERadius})"
+                        );
+                    }
+                }
+            }
+
+            if (!playerHit)
+            {
+                Debug.Log(
+                    $"Jump attack missed - no players within AOE (Inner: {jumpAOERadius}, Outer: {jumpOuterAOERadius})"
+                );
             }
         }
         else
         {
-            Debug.Log("Player not alive or robot died - no damage dealt");
+            Debug.Log("Robot died - no damage dealt");
         }
 
         // Brief pause after landing before switching animation
@@ -754,12 +797,7 @@ public class RobotBoss : MonoBehaviour
                 PlayAnimation(idle_1);
             }
 
-            // Trigger boss music if not already playing
-            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
-            {
-                AudioManager.instance.PlayBossBGM();
-                Debug.Log("Boss jump attack completed - playing boss music!");
-            }
+            // Note: Boss music should already be playing from initial encounter start
         }
         else
         {
@@ -882,12 +920,7 @@ public class RobotBoss : MonoBehaviour
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
 
-            // Trigger boss music if not already playing
-            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
-            {
-                AudioManager.instance.PlayBossBGM();
-                Debug.Log("Boss healing completed - playing boss music!");
-            }
+            // Note: Boss music should already be playing from initial encounter start
         }
     }
 
@@ -973,11 +1006,12 @@ public class RobotBoss : MonoBehaviour
         // Set aggro state when taking damage
         if (IsPlayerAlive() && currentHealth > 0)
         {
-            // Trigger boss music if not already playing
-            if (AudioManager.instance != null && !AudioManager.instance.IsBossMusicPlaying())
+            // Trigger boss music when encounter starts (only once)
+            if (!bossEncounterStarted && AudioManager.instance != null)
             {
                 AudioManager.instance.PlayBossBGM();
-                Debug.Log("Boss took damage - playing boss music!");
+                bossEncounterStarted = true;
+                Debug.Log("Boss took damage - boss encounter started!");
             }
 
             isAggroed = true;
@@ -1017,6 +1051,7 @@ public class RobotBoss : MonoBehaviour
     // Visual debug for ground check (visible in Scene view)
     private void OnDrawGizmosSelected()
     {
+        // Draw ground check circle
         if (groundCheck != null)
         {
             Gizmos.color = isGrounded ? Color.green : Color.red;
@@ -1029,5 +1064,17 @@ public class RobotBoss : MonoBehaviour
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireSphere(checkPosition, groundCheckRadius);
         }
+
+        // Draw jump AOE radius
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, jumpAOERadius);
+
+        // Draw outer AOE radius
+        Gizmos.color = Color.orange;
+        Gizmos.DrawWireSphere(transform.position, jumpOuterAOERadius);
+
+        // Draw jump range
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, jumpRange);
     }
 }
