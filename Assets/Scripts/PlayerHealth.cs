@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -8,15 +9,33 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     public float immortalTime = 0f;
     private float immortalCounter = 0f;
-    public GameObject immortalEffect;
+
+    // public GameObject immortalEffect; // Removed - using subtle transparency instead
     public int healthPotionIncrement = 1;
+
+    // Visual components for immortality effect
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    private bool isImmortal = false;
+    private Coroutine flashCoroutine;
+
+    // MapleStory-style flash settings
+    [Header("Flash Effect Settings")]
+    public float pulseSpeed = 8f; // How fast to pulse (higher = faster)
+    public Color tintColor = Color.white; // Pure white tint
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(currentHealth);
-        immortalEffect.SetActive(false);
+
+        // Get sprite renderer for visual effects
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
     }
 
     // Update is called once per frame
@@ -26,10 +45,65 @@ public class PlayerHealth : MonoBehaviour
         {
             immortalCounter -= Time.deltaTime;
 
+            // Apply subtle visual effect while immortal
+            if (!isImmortal)
+            {
+                isImmortal = true;
+                ApplyImmortalVisual();
+            }
+
             if (immortalCounter <= 0)
             {
-                immortalEffect.SetActive(false);
+                isImmortal = false;
+                RemoveImmortalVisual();
             }
+        }
+    }
+
+    private void ApplyImmortalVisual()
+    {
+        if (spriteRenderer != null && flashCoroutine == null)
+        {
+            flashCoroutine = StartCoroutine(FlashEffect());
+        }
+    }
+
+    private void RemoveImmortalVisual()
+    {
+        if (flashCoroutine != null)
+        {
+            StopCoroutine(flashCoroutine);
+            flashCoroutine = null;
+        }
+
+        if (spriteRenderer != null)
+        {
+            // Return to original color
+            spriteRenderer.color = originalColor;
+            spriteRenderer.enabled = true; // Make sure sprite is enabled
+        }
+    }
+
+    private IEnumerator FlashEffect()
+    {
+        float time = 0f;
+
+        while (isImmortal)
+        {
+            if (spriteRenderer != null)
+            {
+                // Create a smooth pulse using sine wave
+                float pulse = (Mathf.Sin(time * pulseSpeed) + 1f) * 0.5f; // Converts -1,1 to 0,1
+
+                // Gentle alpha pulse between 70% and 100% opacity
+                float alpha = 0.7f + (pulse * 0.3f); // Alpha from 0.7 to 1.0
+                Color currentColor = originalColor;
+                currentColor.a = alpha;
+                spriteRenderer.color = currentColor;
+            }
+
+            time += Time.deltaTime;
+            yield return null; // Wait one frame
         }
     }
 
@@ -56,12 +130,12 @@ public class PlayerHealth : MonoBehaviour
         {
             immortalCounter = immortalTime + 2;
             Destroy(collision.gameObject);
-            immortalEffect.SetActive(true);
         }
-        
+
         if (collision.gameObject.tag == "Health Potion")
         {
-            if (currentHealth < maxHealth) {
+            if (currentHealth < maxHealth)
+            {
                 currentHealth += healthPotionIncrement;
                 healthBar.SetHealth(currentHealth);
             }

@@ -2397,8 +2397,11 @@ MonoBehaviour:
   damageAmount: 30
   healthBar: {fileID: 107090670}
   immortalTime: 2
-  immortalEffect: {fileID: 1334456061}
+  immortalEffect: {fileID: 0}
   healthPotionIncrement: 1
+  flashSpeed: 8
+  minAlpha: 0.3
+  maxAlpha: 1
 --- !u!114 &535057898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9412,11 +9415,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1334456061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
-  m_PrefabInstance: {fileID: 1916779439}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429109580
 GameObject:
   m_ObjectHideFlags: 0
@@ -10816,7 +10814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
