@@ -85,6 +85,10 @@ public class RobotBoss : MonoBehaviour
     private Spine.AnimationState spineAnimationState;
     private Spine.Skeleton skeleton;
 
+    // Color management for flashing effect (Spine2D)
+    private Color originalSkeletonColor = Color.white;
+    private bool isFlashing = false;
+
     // State tracking
     private bool isDead = false;
     private bool isMoving = false;
@@ -187,6 +191,8 @@ public class RobotBoss : MonoBehaviour
                 Debug.Log(
                     $"Healing will trigger in {healingDelay} seconds - prioritizing over combat!"
                 );
+                // Start preparing animation for smoother transition
+                PlayAnimation(idle_2);
             }
             // Check if delay has passed
             else if (Time.time >= healingTriggerTime)
@@ -198,13 +204,14 @@ public class RobotBoss : MonoBehaviour
                 healingTriggerTime = 0f; // Reset trigger time
                 return;
             }
-            // During healing delay, still idle and don't attack
+            // During healing delay, show preparing animation
             else
             {
                 Debug.Log(
-                    $"Preparing to heal in {healingTriggerTime - Time.time:F1}s - not attacking"
+                    $"Preparing to heal in {healingTriggerTime - Time.time:F1}s - showing preparation"
                 );
-                PlayAnimation(idle_1);
+                // Keep playing preparation animation
+                PlayAnimation(idle_2);
                 return;
             }
         }
@@ -496,10 +503,13 @@ public class RobotBoss : MonoBehaviour
             // Interpolate X position towards target
             float currentX = Mathf.Lerp(startPosition.x, targetPosition.x, easedProgress);
 
-            // Add a parabolic arc to the Y movement
+            // Create a more realistic parabolic arc
             float arcHeight = 2f;
-            float arc = Mathf.Sin(progress * Mathf.PI) * arcHeight;
-            float currentY = originalY + arc; // Always use original Y + arc
+            // Use a parabolic function: -4 * (progress - 0.5)^2 + 1
+            // This creates a smooth arc that peaks at the middle and gradually descends
+            float normalizedProgress = progress * 2f - 1f; // Convert to -1 to 1 range
+            float arc = arcHeight * (1f - normalizedProgress * normalizedProgress); // Parabolic curve
+            float currentY = originalY + arc;
 
             // Set the new position
             Vector3 newPosition = new Vector3(currentX, currentY, transform.position.z);
@@ -601,8 +611,14 @@ public class RobotBoss : MonoBehaviour
         isInvincible = true;
         Debug.Log("Starting healing state - robot is now invincible!");
 
+        // Start flashing effect
+        StartCoroutine(FlashWhiteEffect());
+
+        // Smooth transition: brief pause before main healing animation
+        yield return new WaitForSeconds(0.2f);
+
         // Play healing animation
-        PlayAnimation(idle_2);
+        PlayAnimation(flag_meeting);
 
         // Instantiate healing effect
         if (healingEffectPrefab != null)
@@ -677,6 +693,13 @@ public class RobotBoss : MonoBehaviour
             yield break;
         }
 
+        // Stop flashing effect
+        StopFlashing();
+
+        // Smooth transition out of healing
+        PlayAnimation(idle_1);
+        yield return new WaitForSeconds(0.3f);
+
         // End healing state
         isHealing = false;
         isInvincible = false;
@@ -690,6 +713,41 @@ public class RobotBoss : MonoBehaviour
         {
             isAggroed = true;
             aggroEndTime = Time.time + aggroTime;
+        }
+    }
+
+    IEnumerator FlashWhiteEffect()
+    {
+        if (skeletonAnimation == null)
+            yield break;
+
+        isFlashing = true;
+        float flashSpeed = 0.12f; // Good visibility timing
+
+        while (isFlashing && isHealing)
+        {
+            // Flash to pure white (bright invincible state)
+            skeleton.SetColor(Color.white); // Pure white flash
+            yield return new WaitForSeconds(flashSpeed);
+
+            // Flash to much darker state for strong white contrast
+            if (isFlashing && isHealing) // Check again in case healing ended
+            {
+                skeleton.SetColor(new Color(0.4f, 0.4f, 0.4f, 1f)); // Dark gray for contrast
+                yield return new WaitForSeconds(flashSpeed);
+            }
+        }
+
+        // Ensure we return to original color when done
+        skeleton.SetColor(Color.white);
+    }
+
+    private void StopFlashing()
+    {
+        isFlashing = false;
+        if (skeletonAnimation != null && skeleton != null)
+        {
+            skeleton.SetColor(Color.white);
         }
     }
 
