@@ -343,6 +343,15 @@ public class RobotBoss : MonoBehaviour
     {
         if (spineAnimationState != null && !string.IsNullOrEmpty(animationName))
         {
+            // Don't allow any animation to override the death animation
+            if (isDead && currentAnimation == death && animationName != death)
+            {
+                Debug.Log(
+                    $"Robot is dead - ignoring animation change from '{death}' to '{animationName}'"
+                );
+                return;
+            }
+
             if (currentAnimation != animationName)
             {
                 try
@@ -531,6 +540,14 @@ public class RobotBoss : MonoBehaviour
 
         while (elapsedTime < jumpDuration && !isDead)
         {
+            // If robot died during jump, immediately exit
+            if (isDead)
+            {
+                Debug.Log("Robot died during jump - immediately stopping jump coroutine");
+                isJumping = false;
+                yield break;
+            }
+
             // Update target position to follow moving player (X only, keep same Y)
             // Only update target if player is still alive, otherwise keep last known position
             if (IsPlayerAlive())
@@ -563,8 +580,9 @@ public class RobotBoss : MonoBehaviour
             Vector3 newPosition = new Vector3(currentX, currentY, transform.position.z);
             transform.position = newPosition;
 
-            // Ensure jump animation stays active during the entire jump
-            if (currentAnimation != jump)
+            // Only ensure jump animation stays active if robot is still alive
+            // This prevents overriding the death animation
+            if (currentAnimation != jump && !isDead)
             {
                 PlayAnimation(jump);
                 Debug.Log("Re-applying jump animation to prevent override");
@@ -578,29 +596,30 @@ public class RobotBoss : MonoBehaviour
             yield return null;
         }
 
-        // Ensure we end up at the target position (X only, keep original Y)
-        if (!isDead)
+        // If robot died during jump, exit immediately without landing effects
+        if (isDead)
         {
-            if (IsPlayerAlive())
-            {
-                // Land on the ground beneath the player's X position
-                transform.position = new Vector3(
-                    player.transform.position.x,
-                    originalY,
-                    transform.position.z
-                );
-                Debug.Log(
-                    $"Jump completed - Landed on ground beneath player at: {transform.position}"
-                );
-            }
-            else
-            {
-                // If player died during jump, land at target X position but on ground
-                transform.position = new Vector3(targetPosition.x, originalY, transform.position.z);
-                Debug.Log(
-                    $"Player died during jump - landing at ground level: {transform.position}"
-                );
-            }
+            Debug.Log("Robot died during jump - skipping landing sequence");
+            isJumping = false;
+            yield break;
+        }
+
+        // Ensure we end up at the target position (X only, keep original Y)
+        if (IsPlayerAlive())
+        {
+            // Land on the ground beneath the player's X position
+            transform.position = new Vector3(
+                player.transform.position.x,
+                originalY,
+                transform.position.z
+            );
+            Debug.Log($"Jump completed - Landed on ground beneath player at: {transform.position}");
+        }
+        else
+        {
+            // If player died during jump, land at target X position but on ground
+            transform.position = new Vector3(targetPosition.x, originalY, transform.position.z);
+            Debug.Log($"Player died during jump - landing at ground level: {transform.position}");
         }
 
         // Instantiate landing effect only on landing
@@ -636,6 +655,14 @@ public class RobotBoss : MonoBehaviour
 
         // Brief pause after landing before switching animation
         yield return new WaitForSeconds(0.2f);
+
+        // Final check before completing jump - if robot died, don't continue
+        if (isDead)
+        {
+            Debug.Log("Robot died after landing - stopping jump completion");
+            isJumping = false;
+            yield break;
+        }
 
         // Now that we've landed, we can change animations
         isJumping = false;
