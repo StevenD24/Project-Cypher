@@ -6,8 +6,8 @@ public class PlayerHealth : MonoBehaviour
         maxHealth,
         damageAmount;
     public HealthBar healthBar;
-    public float immortalTime = 1f;
-    private float immortalCounter;
+    public float immortalTime = 0f;
+    private float immortalCounter = 0f;
     public GameObject immortalEffect;
     public int healthPotionIncrement = 1;
 

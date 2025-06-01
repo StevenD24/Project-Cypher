@@ -287,6 +287,7 @@ public class RobotBoss : MonoBehaviour
                 );
                 // Don't record attack time here - do it at the end of the attack
                 // Stop running and start attack
+                FacePlayer();
                 PlayAnimation(skill_1);
                 StartCoroutine(AttackAfterDelay());
             }
@@ -339,6 +340,30 @@ public class RobotBoss : MonoBehaviour
                     Debug.LogWarning($"Error playing animation '{animationName}': {e.Message}");
                 }
             }
+        }
+    }
+
+    private void FacePlayer()
+    {
+        // Check if player exists and is alive before trying to face them
+        if (!IsPlayerAlive())
+        {
+            Debug.Log("Player is null or dead - cannot face player");
+            return;
+        }
+
+        Vector2 playerPosition = new Vector2(player.transform.position.x, transform.position.y);
+        Vector2 direction = (playerPosition - (Vector2)transform.position).normalized;
+
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(0.65f, 0.65f, 1);
+            Debug.Log("Facing right towards player");
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-0.65f, 0.65f, 1);
+            Debug.Log("Facing left towards player");
         }
     }
 
