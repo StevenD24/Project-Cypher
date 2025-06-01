@@ -307,6 +307,13 @@ public class RobotBoss : MonoBehaviour
         float attackAnimationTime = 0.8f; // Attack animation duration
         yield return new WaitForSeconds(attackAnimationTime);
 
+        // Check if robot died during attack - if so, stop the coroutine
+        if (isDead)
+        {
+            Debug.Log("Robot died during attack - stopping attack coroutine");
+            yield break;
+        }
+
         // Switch to idle during cooldown period
         Debug.Log("Attack animation finished - switching to idle for cooldown");
         PlayAnimation(idle_1);
@@ -317,6 +324,13 @@ public class RobotBoss : MonoBehaviour
         {
             Debug.Log($"Cooling down for {cooldownTime:F1} more seconds");
             yield return new WaitForSeconds(cooldownTime);
+        }
+
+        // Check again if robot died during cooldown
+        if (isDead)
+        {
+            Debug.Log("Robot died during cooldown - stopping attack coroutine");
+            yield break;
         }
 
         isAttacking = false;
