@@ -12,6 +12,11 @@ public class Player : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask groundLayer;
     private bool isGrounded;
+    private bool wasGrounded; // Track previous grounded state
+
+    [Header("Double Jump")]
+    public int maxAirJumps = 1; // Allow only 1 air jump
+    private int airJumpsRemaining;
 
     private Animator animator;
     private bool isFacingRight = true;
@@ -22,20 +27,40 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        airJumpsRemaining = maxAirJumps; // Initialize with max air jumps
     }
 
     // Update is called once per frame
     void Update()
     {
+        wasGrounded = isGrounded; // Store previous grounded state
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // Reset jumps only when landing (transitioning from air to ground)
+        if (isGrounded && !wasGrounded)
+        {
+            airJumpsRemaining = maxAirJumps;
+        }
 
         horizontalInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Allow jumping if grounded OR if air jumps remaining
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            AudioManager.instance.PlaySFX(4);
+            if (isGrounded)
+            {
+                // Can always jump from ground
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                AudioManager.instance.PlaySFX(4);
+            }
+            else if (airJumpsRemaining > 0)
+            {
+                // Can only air jump if air jumps remaining
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                airJumpsRemaining--; // Use up one air jump
+                AudioManager.instance.PlaySFX(4);
+            }
         }
 
         if (rb.linearVelocity.x > 0)

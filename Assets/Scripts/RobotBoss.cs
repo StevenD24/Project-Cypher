@@ -355,12 +355,14 @@ public class RobotBoss : MonoBehaviour
                     Debug.Log(
                         $"Player in attack range but still cooling down (Need {timeBetweenAttacks - timeSinceLastAttack:F1}s more)"
                     );
+                    // Face player and wait - don't move
+                    FacePlayer();
                     PlayAnimation(idle_2);
                 }
-                else
+                else if (distance > attackRange)
                 {
                     Debug.Log("Chasing player!");
-                    // Only chase if grounded
+                    // Only chase if grounded and player is outside attack range
                     if (isGrounded)
                     {
                         // Play run animation and move towards player
