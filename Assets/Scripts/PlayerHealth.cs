@@ -107,11 +107,14 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void DealDamage()
+    public void DealDamage(int customDamage = -1)
     {
         if (immortalCounter <= 0)
         {
-            currentHealth -= damageAmount;
+            // Use custom damage if provided, otherwise use default damageAmount
+            int actualDamage = customDamage > 0 ? customDamage : damageAmount;
+
+            currentHealth -= actualDamage;
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {

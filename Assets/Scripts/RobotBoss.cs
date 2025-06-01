@@ -416,8 +416,8 @@ public class RobotBoss : MonoBehaviour
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
-                    playerHealth.DealDamage();
-                    Debug.Log("Robot dealt damage to player!");
+                    playerHealth.DealDamage(damageAmount);
+                    Debug.Log($"Robot dealt {damageAmount} damage to player!");
                 }
                 else
                 {
@@ -590,8 +590,8 @@ public class RobotBoss : MonoBehaviour
                 if (playerHealth != null)
                 {
                     // Deal jump damage as a single hit on landing
-                    playerHealth.DealDamage();
-                    Debug.Log($"Robot landed on player! Dealt jump damage!");
+                    playerHealth.DealDamage((int)jumpDamage);
+                    Debug.Log($"Robot landed on player! Dealt {jumpDamage} jump damage!");
                 }
             }
             else
@@ -791,8 +791,8 @@ public class RobotBoss : MonoBehaviour
             PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.DealDamage();
-                Debug.Log("Player touched robot - dealing touch damage");
+                playerHealth.DealDamage(damageAmount);
+                Debug.Log($"Player touched robot - dealing {damageAmount} touch damage");
             }
         }
     }
