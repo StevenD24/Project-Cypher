@@ -752,7 +752,7 @@ public class RobotBoss : MonoBehaviour
             && jumpLandingSFXIndex < AudioManager.instance.soundEffects.Length
         )
         {
-            AudioManager.instance.PlaySFX(jumpLandingSFXIndex);
+            // AudioManager.instance.PlaySFX(jumpLandingSFXIndex);
             Debug.Log("Landing sound effect played!");
         }
         else
