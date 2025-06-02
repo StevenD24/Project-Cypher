@@ -271,7 +271,7 @@ public class RobotBoss : MonoBehaviour
         float timeSinceLastJump = Time.time - lastJumpAttackTime;
 
         if (
-            healthPercentage < 0.5f
+            healthPercentage < 0.7f
             && timeSinceLastJump >= jumpCooldown
             && distance <= jumpRange
             && !isJumping
