@@ -11,7 +11,7 @@ public class PotionAnimation : MonoBehaviour
     [Header("Liquid Glow Effect")]
     public bool enableGlowPulse = true;
     public float pulseSpeed = 2f; // How fast to pulse (slower = more gentle)
-    public Color glowTint = new Color(1f, 0.9f, 0.9f, 1f); // Subtle tint
+    public Color glowTint = Color.white; // Changed to pure white - no tinting
     public float glowIntensityMin = 0.8f; // Minimum glow intensity
     public float glowIntensityMax = 1.3f; // Maximum glow intensity
 
@@ -116,27 +116,11 @@ public class PotionAnimation : MonoBehaviour
         }
     }
 
-    // Public method to customize the potion type with different colors
+    // Public method to customize the potion type - now all use white/neutral colors
     public void SetPotionType(PotionType type)
     {
-        switch (type)
-        {
-            case PotionType.Health:
-                glowTint = new Color(1f, 0.7f, 0.7f, 1f); // Reddish glow
-                break;
-            case PotionType.Mana:
-                glowTint = new Color(0.7f, 0.7f, 1f, 1f); // Bluish glow
-                break;
-            case PotionType.Poison:
-                glowTint = new Color(0.7f, 1f, 0.7f, 1f); // Greenish glow
-                break;
-            case PotionType.Magic:
-                glowTint = new Color(1f, 0.9f, 0.7f, 1f); // Golden glow
-                break;
-            default:
-                glowTint = new Color(1f, 0.9f, 0.9f, 1f); // Default subtle tint
-                break;
-        }
+        // Set all potion types to neutral white tint - no coloring
+        glowTint = Color.white;
     }
 
     void OnDestroy()
@@ -159,12 +143,4 @@ public class PotionAnimation : MonoBehaviour
             StartGlowEffect();
         }
     }
-}
-
-public enum PotionType
-{
-    Health,
-    Mana,
-    Poison,
-    Magic,
 }

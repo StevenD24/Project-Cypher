@@ -8,14 +8,7 @@ public class PlayerHealth : MonoBehaviour
         damageAmount;
     public HealthBar healthBar;
     public float immortalTime = 0f;
-    private float immortalCounter = 0f;
-
-    // public GameObject immortalEffect; // Removed - using subtle transparency instead
-    public int healthPotionIncrement = 10;
-
-    [Header("Potion Pickup Effects")]
-    public GameObject potionPickupEffect; // Prefab to instantiate when picking up potion
-    public float effectDuration = 2f; // How long to keep the effect before destroying it
+    public float immortalCounter = 0f; // Made public so PotionManager can access it
 
     // Visual components for immortality effect
     private SpriteRenderer spriteRenderer;
@@ -115,10 +108,34 @@ public class PlayerHealth : MonoBehaviour
     {
         if (immortalCounter <= 0)
         {
-            // Use custom damage if provided, otherwise use default damageAmount
-            int actualDamage = customDamage > 0 ? customDamage : damageAmount;
+            // Check for shield protection from PotionManager
+            PotionManager potionManager = GetComponent<PotionManager>();
+            if (potionManager != null && potionManager.HasShield())
+            {
+                // Shield absorbs damage
+                int shieldStrength = potionManager.GetShieldStrength();
+                int actualDamage = customDamage > 0 ? customDamage : damageAmount;
 
-            currentHealth -= actualDamage;
+                if (shieldStrength >= actualDamage)
+                {
+                    // Shield completely absorbs damage
+                    Debug.Log("Shield absorbed damage!");
+                    return;
+                }
+                else
+                {
+                    // Shield partially absorbs damage
+                    actualDamage -= shieldStrength;
+                    Debug.Log(
+                        $"Shield absorbed {shieldStrength} damage, {actualDamage} damage taken!"
+                    );
+                }
+            }
+
+            // Use custom damage if provided, otherwise use default damageAmount
+            int finalDamage = customDamage > 0 ? customDamage : damageAmount;
+
+            currentHealth -= finalDamage;
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
@@ -128,53 +145,6 @@ public class PlayerHealth : MonoBehaviour
             {
                 immortalCounter = immortalTime;
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bonus Bottle")
-        {
-            AudioManager.instance.PlaySFX(2);
-            immortalCounter = immortalTime + 2;
-
-            // Instantiate pickup effect if available
-            if (potionPickupEffect != null)
-            {
-                GameObject effect = Instantiate(
-                    potionPickupEffect,
-                    transform.position,
-                    Quaternion.identity
-                );
-                effect.transform.SetParent(transform); // Make effect follow player
-                Destroy(effect, effectDuration);
-            }
-
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.tag == "Health Potion")
-        {
-            AudioManager.instance.PlaySFX(1);
-
-            // Instantiate pickup effect at player position and make it follow
-            if (potionPickupEffect != null)
-            {
-                GameObject effect = Instantiate(
-                    potionPickupEffect,
-                    transform.position,
-                    Quaternion.identity
-                );
-                effect.transform.SetParent(transform); // Make effect follow player
-                Destroy(effect, effectDuration);
-            }
-
-            if (currentHealth < maxHealth)
-            {
-                currentHealth += healthPotionIncrement;
-                healthBar.SetHealth(currentHealth);
-            }
-            Destroy(collision.gameObject);
         }
     }
 }
