@@ -30,8 +30,8 @@ public class RobotBoss : MonoBehaviour
     public float jumpDamage = 30f;
     public float jumpRange = 15f; // Maximum range for jump attack
     public float jumpCooldown = 5f; // Cooldown between jump attacks
-    public float jumpAOERadius = 4.2f; // Inner AOE radius for full jump damage (reduced from 5f)
-    public float jumpOuterAOERadius = 6f; // Outer AOE radius for reduced damage (reduced from 7f)
+    public float jumpAOERadius = 5f; // Inner AOE radius for full jump damage (increased from 4.2f)
+    public float jumpOuterAOERadius = 6.5f; // Outer AOE radius for reduced damage (increased from 6f)
     public float jumpOuterDamage = 15f; // Reduced damage for outer AOE
     public LayerMask playerLayerMask = 1; // Layer mask for player detection
 
@@ -266,12 +266,12 @@ public class RobotBoss : MonoBehaviour
             healingTriggerTime = 0f;
         }
 
-        // Check for jump attack condition (health below 50% and cooldown has passed)
+        // Check for jump attack condition (health below 80% and cooldown has passed)
         float distance = Vector2.Distance(transform.position, player.transform.position);
         float timeSinceLastJump = Time.time - lastJumpAttackTime;
 
         if (
-            healthPercentage < 0.7f
+            healthPercentage < 0.8f
             && timeSinceLastJump >= jumpCooldown
             && distance <= jumpRange
             && !isJumping

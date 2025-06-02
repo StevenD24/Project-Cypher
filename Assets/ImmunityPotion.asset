@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c329d2636d84c49a7b36c1ca4ca1e8f6, type: 3}
   m_Name: ImmunityPotion
   m_EditorClassIdentifier: 
-  potionName: 
-  potionType: 0
+  potionName: Immunity Potion
+  potionType: 2
   potionSprite: {fileID: 0}
   effectValue: 0
-  effectDuration: 0
+  effectDuration: 3
   glowTint: {r: 1, g: 1, b: 1, a: 1}
-  pickupEffect: {fileID: 0}
+  pickupEffect: {fileID: 4425544509863617631, guid: d552e90926df03a4596ccf40851b2dce, type: 3}
   effectDuration_Visual: 2
   audioClipIndex: 1
   enableCustomBobbing: 0
