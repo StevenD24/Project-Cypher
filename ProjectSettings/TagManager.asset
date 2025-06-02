@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Enemy
   - RobotBoss
+  - OneWayPlatform
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
     private bool canDash = true;
     private float dashTimeRemaining = 0f;
 
+    [Header("One-Way Platforms")]
+    public float platformDetectionDistance = 2f; // How far to check for platforms above
+    public string platformTag = "OneWayPlatform"; // Tag for one-way platforms
+    private Collider2D playerCollider;
+
     private Animator animator;
     private bool isFacingRight = true;
 
@@ -36,6 +41,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        playerCollider = GetComponent<Collider2D>();
         airJumpsRemaining = maxAirJumps; // Initialize with max air jumps
     }
 
@@ -43,13 +49,28 @@ public class Player : MonoBehaviour
     void Update()
     {
         wasGrounded = isGrounded; // Store previous grounded state
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // Check for regular ground
+        bool groundedOnRegularGround = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
+            groundLayer
+        );
+
+        // Check for one-way platforms
+        bool groundedOnOneWayPlatform = IsGroundedOnOneWayPlatform();
+
+        // Player is grounded if on either regular ground or one-way platform
+        isGrounded = groundedOnRegularGround || groundedOnOneWayPlatform;
 
         // Reset jumps only when landing (transitioning from air to ground)
         if (isGrounded && !wasGrounded)
         {
             airJumpsRemaining = maxAirJumps;
         }
+
+        // Handle one-way platforms
+        HandleOneWayPlatforms();
 
         // Handle dashing input
         HandleDashInput();
@@ -125,6 +146,85 @@ public class Player : MonoBehaviour
             animator.SetBool("isDashing", false);
             animator.SetBool("isGrounded", isGrounded);
             animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        }
+    }
+
+    private void HandleOneWayPlatforms()
+    {
+        // Find all GameObjects with the OneWayPlatform tag
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag(platformTag);
+
+        foreach (GameObject platformObj in platforms)
+        {
+            Collider2D platformCollider = platformObj.GetComponent<Collider2D>();
+            if (platformCollider == null)
+                continue;
+
+            // Check player position relative to platform
+            bool playerBelowPlatform = transform.position.y < platformCollider.bounds.center.y;
+            bool playerAbovePlatform = transform.position.y > platformCollider.bounds.max.y + 0.1f;
+            bool playerMovingUp = rb.linearVelocity.y > 0.1f; // Small threshold to avoid jittering
+            bool playerMovingDown = rb.linearVelocity.y < -0.1f;
+
+            // Check if player is pressing down (for drop-through functionality)
+            bool playerPressingDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+
+            if (playerBelowPlatform && playerMovingUp)
+            {
+                // Player is below and jumping up - disable collision temporarily
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
+                // Re-enable collision after a short delay when player stops moving up
+                StartCoroutine(ReEnableCollisionWhenNotMovingUp(platformCollider));
+            }
+            else if (!playerBelowPlatform && playerPressingDown)
+            {
+                // Player is on platform and wants to drop through
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
+                // Start a coroutine to re-enable collision after player falls below platform
+                StartCoroutine(ReEnableCollisionWhenBelow(platformCollider));
+            }
+            else if (playerAbovePlatform && (playerMovingDown || rb.linearVelocity.y <= 0))
+            {
+                // Player is clearly above platform and falling/stationary - ensure collision is enabled
+                Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+            }
+        }
+    }
+
+    private System.Collections.IEnumerator ReEnableCollisionWhenNotMovingUp(
+        Collider2D platformCollider
+    )
+    {
+        // Wait until player stops moving up or is clearly above the platform
+        while (
+            rb.linearVelocity.y > 0 || transform.position.y < platformCollider.bounds.max.y + 0.2f
+        )
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        // Re-enable collision
+        if (platformCollider != null && playerCollider != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
+        }
+    }
+
+    private System.Collections.IEnumerator ReEnableCollisionWhenBelow(Collider2D platformCollider)
+    {
+        // Wait a small amount of time to ensure player starts falling
+        yield return new WaitForSeconds(0.1f);
+
+        // Wait until player is clearly below the platform
+        while (transform.position.y > platformCollider.bounds.min.y - 0.5f)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+
+        // Re-enable collision
+        if (platformCollider != null && playerCollider != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
         }
     }
 
@@ -207,5 +307,33 @@ public class Player : MonoBehaviour
     public bool GetIsDashing()
     {
         return isDashing;
+    }
+
+    private bool IsGroundedOnOneWayPlatform()
+    {
+        // Check for one-way platforms at the ground check position
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(
+            groundCheck.position,
+            groundCheckRadius
+        );
+
+        foreach (Collider2D collider in colliders)
+        {
+            // Check if this collider belongs to a one-way platform
+            if (collider.gameObject.CompareTag(platformTag))
+            {
+                // Make sure the player is on top of the platform (not passing through)
+                if (transform.position.y > collider.bounds.max.y - 0.1f)
+                {
+                    // Also make sure collision is enabled between player and platform
+                    if (!Physics2D.GetIgnoreCollision(playerCollider, collider))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 }
