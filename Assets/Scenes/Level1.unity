@@ -2554,7 +2554,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 77f581841239e4ca58b8a630f30b4293, type: 3}
   m_Resource: {fileID: 8300000, guid: 77f581841239e4ca58b8a630f30b4293, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2949,6 +2949,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  maxAirJumps: 1
 --- !u!95 &535057896
 Animator:
   serializedVersion: 7
@@ -2984,7 +2985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 5
-  maxHealth: 1000
+  maxHealth: 100
   damageAmount: 10
   healthBar: {fileID: 107090670}
   immortalTime: 2
@@ -3464,10 +3465,10 @@ MonoBehaviour:
     ScreenPosition: {x: -0.1, y: 0.33}
     DeadZone:
       Enabled: 1
-      Size: {x: 0.15, y: 0.9}
+      Size: {x: 0.15, y: 1.5}
     HardLimits:
       Enabled: 0
-      Size: {x: 0.8, y: 0.9}
+      Size: {x: 0.8, y: 1.5}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
@@ -9475,7 +9476,13 @@ MonoBehaviour:
   jumpSpeed: 10
   jumpDamage: 30
   jumpRange: 15
-  jumpCooldown: 5
+  jumpCooldown: 7
+  jumpAOERadius: 3
+  jumpOuterAOERadius: 4
+  jumpOuterDamage: 10
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
   tiredHealthThreshold: 0.2
   healingEffectPrefab: {fileID: 4772634663576830964, guid: e1385af346f4e624eb313ec1ea4fcd7e, type: 3}
   healingDuration: 3
@@ -10914,7 +10921,7 @@ MonoBehaviour:
   - {fileID: 942215357}
   - {fileID: 1092114898}
   - {fileID: 1958151800}
-  normalBGMPrefab: {fileID: 1036607972}
+  normalBGMPrefab: {fileID: 471697018}
   bossBGMPrefab: {fileID: 473770428}
 --- !u!4 &1406922137
 Transform:
@@ -12627,8 +12634,8 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   m_Resource: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
-  m_Pitch: 0.8
+  m_Volume: 0.9
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
