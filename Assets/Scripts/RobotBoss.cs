@@ -30,9 +30,9 @@ public class RobotBoss : MonoBehaviour
     public float jumpDamage = 30f;
     public float jumpRange = 15f; // Maximum range for jump attack
     public float jumpCooldown = 5f; // Cooldown between jump attacks
-    public float jumpAOERadius = 3f; // Inner AOE radius for full jump damage
-    public float jumpOuterAOERadius = 4f; // Outer AOE radius for reduced damage
-    public float jumpOuterDamage = 10f; // Reduced damage for outer AOE
+    public float jumpAOERadius = 4.2f; // Inner AOE radius for full jump damage (reduced from 5f)
+    public float jumpOuterAOERadius = 6f; // Outer AOE radius for reduced damage (reduced from 7f)
+    public float jumpOuterDamage = 15f; // Reduced damage for outer AOE
     public LayerMask playerLayerMask = 1; // Layer mask for player detection
 
     [Header("Health Thresholds")]
@@ -565,14 +565,106 @@ public class RobotBoss : MonoBehaviour
         // Store original position and target position (keep same Y level)
         Vector3 startPosition = transform.position;
         float originalY = startPosition.y; // Store the original Y position
-        Vector3 targetPosition = new Vector3(
-            player.transform.position.x,
-            originalY,
-            transform.position.z
+
+        // FIX: Commit to the player's position when jump starts - don't update during jump
+        // ADVANCED PREDICTION: Account for dash mechanics and player behavior patterns
+        Vector3 playerVelocity = Vector3.zero;
+        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+        Player playerScript = player.GetComponent<Player>();
+        bool playerIsGrounded = true; // Default assumption
+        bool playerCanDash = true; // Default assumption
+        bool playerIsDashing = false;
+
+        if (playerRb != null)
+        {
+            playerVelocity = playerRb.linearVelocity;
+        }
+
+        if (playerScript != null)
+        {
+            playerIsDashing = playerScript.GetIsDashing();
+            // If we had access to player's grounded state and dash cooldown, we'd use them here
+            // For now, assume player can dash if not currently dashing and has reasonable velocity
+        }
+
+        // ADVANCED PREDICTION LOGIC
+        Vector3 basePlayerPosition = player.transform.position;
+        float jumpDuration = 0.7f; // Match the actual jump duration
+
+        // Calculate multiple potential target positions
+        Vector3 primaryTarget;
+
+        if (playerIsDashing)
+        {
+            // If player is currently dashing, predict where dash will end
+            float remainingDashTime = 0.15f; // Assume worst case - full dash duration remaining
+            Vector3 dashEndPosition =
+                basePlayerPosition + (playerVelocity.normalized * 15f * remainingDashTime);
+            primaryTarget = new Vector3(dashEndPosition.x, originalY, transform.position.z);
+            Debug.Log($"Player is dashing - targeting dash end position: {primaryTarget}");
+        }
+        else
+        {
+            // Advanced prediction for non-dashing player
+            float basePredictionTime = jumpDuration * 0.8f; // Predict for most of jump duration
+
+            // Consider if player might dash during our jump
+            bool playerLikelyToDash = !playerIsGrounded && Mathf.Abs(playerVelocity.x) > 2f; // Moving fast in air
+
+            if (playerLikelyToDash)
+            {
+                // Create a spread of potential positions accounting for dash
+                Vector3 currentTrajectory =
+                    basePlayerPosition + (playerVelocity * basePredictionTime);
+
+                // Calculate potential dash positions in both directions
+                float dashDistance = 15f * 0.15f; // Max dash distance
+                Vector3 leftDashTarget = currentTrajectory + Vector3.left * dashDistance;
+                Vector3 rightDashTarget = currentTrajectory + Vector3.right * dashDistance;
+
+                // Choose target based on player's current movement and position relative to robot
+                float distanceToRobot = Vector2.Distance(transform.position, basePlayerPosition);
+                bool playerMovingAwayFromRobot =
+                    (basePlayerPosition.x - transform.position.x) * playerVelocity.x > 0;
+
+                if (playerMovingAwayFromRobot && distanceToRobot > 8f)
+                {
+                    // Player is far and moving away - target where they'll likely dash to escape
+                    primaryTarget = playerVelocity.x > 0 ? rightDashTarget : leftDashTarget;
+                    Debug.Log(
+                        $"Player likely to dash away - targeting escape route: {primaryTarget}"
+                    );
+                }
+                else
+                {
+                    // Player is close or not moving away - target center of potential positions
+                    float centerX =
+                        (leftDashTarget.x + rightDashTarget.x + currentTrajectory.x) / 3f;
+                    primaryTarget = new Vector3(centerX, originalY, transform.position.z);
+                    Debug.Log(
+                        $"Player in combat range - targeting center of dash options: {primaryTarget}"
+                    );
+                }
+            }
+            else
+            {
+                // Standard prediction for grounded or slow-moving player
+                float standardPredictionTime = jumpDuration * 0.6f;
+                Vector3 predictedPosition =
+                    basePlayerPosition + (playerVelocity * standardPredictionTime);
+                primaryTarget = new Vector3(predictedPosition.x, originalY, transform.position.z);
+                Debug.Log($"Standard prediction - targeting: {primaryTarget}");
+            }
+        }
+
+        Vector3 committedTargetPosition = primaryTarget;
+
+        Debug.Log(
+            $"ADVANCED JUMP PREDICTION: Target: {committedTargetPosition}, Player velocity: {playerVelocity.x:F1} m/s, Is dashing: {playerIsDashing}"
         );
 
         // Face the player
-        Vector2 direction = (targetPosition - startPosition).normalized;
+        Vector2 direction = (committedTargetPosition - startPosition).normalized;
         if (direction.x > 0)
         {
             transform.localScale = new Vector3(0.65f, 0.65f, 1);
@@ -586,7 +678,6 @@ public class RobotBoss : MonoBehaviour
         PlayAnimation(jump);
 
         // Animate the jump movement
-        float jumpDuration = 1.0f; // Duration of the jump
         float elapsedTime = 0f;
 
         while (elapsedTime < jumpDuration && !isDead)
@@ -599,25 +690,14 @@ public class RobotBoss : MonoBehaviour
                 yield break;
             }
 
-            // Update target position to follow moving player (X only, keep same Y)
-            // Only update target if player is still alive, otherwise keep last known position
-            if (IsPlayerAlive())
-            {
-                // Always target the ground beneath the player, not the player's Y position
-                targetPosition = new Vector3(
-                    player.transform.position.x,
-                    originalY,
-                    transform.position.z
-                );
-            }
-
+            // FIX: Don't update target position - stick to committed target
             // Calculate movement progress
             float progress = elapsedTime / jumpDuration;
             // Use easing for more natural jump movement
             float easedProgress = Mathf.SmoothStep(0f, 1f, progress);
 
-            // Interpolate X position towards target
-            float currentX = Mathf.Lerp(startPosition.x, targetPosition.x, easedProgress);
+            // Interpolate X position towards committed target
+            float currentX = Mathf.Lerp(startPosition.x, committedTargetPosition.x, easedProgress);
 
             // Create a more realistic parabolic arc
             float arcHeight = 2f;
@@ -640,7 +720,7 @@ public class RobotBoss : MonoBehaviour
             }
 
             Debug.Log(
-                $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}, Target: Ground beneath player at X:{player.transform.position.x:F1}"
+                $"Jump Progress: {progress:F2}, Position: ({currentX:F1}, {currentY:F1}), Arc: {arc:F1}, Target: Committed position X:{committedTargetPosition.x:F1}"
             );
 
             elapsedTime += Time.deltaTime;
@@ -655,23 +735,9 @@ public class RobotBoss : MonoBehaviour
             yield break;
         }
 
-        // Ensure we end up at the target position (X only, keep original Y)
-        if (IsPlayerAlive())
-        {
-            // Land on the ground beneath the player's X position
-            transform.position = new Vector3(
-                player.transform.position.x,
-                originalY,
-                transform.position.z
-            );
-            Debug.Log($"Jump completed - Landed on ground beneath player at: {transform.position}");
-        }
-        else
-        {
-            // If player died during jump, land at target X position but on ground
-            transform.position = new Vector3(targetPosition.x, originalY, transform.position.z);
-            Debug.Log($"Player died during jump - landing at ground level: {transform.position}");
-        }
+        // FIX: Land at the committed target position, not the current player position
+        transform.position = committedTargetPosition;
+        Debug.Log($"Jump completed - Landed at committed target: {transform.position}");
 
         // Instantiate landing effect only on landing
         if (jumpEffectPrefab != null)
@@ -680,19 +746,19 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Landing effect instantiated!");
         }
 
-        // Check if robot landed on player and deal damage AFTER landing
+        // FIX: Deal damage based on the committed landing position, not robot's final position
         if (!isDead)
         {
-            // Two-tier AOE damage system
+            // Two-tier AOE damage system based on committed landing position
             // First check inner circle for full damage
             Collider2D[] innerTargets = Physics2D.OverlapCircleAll(
-                transform.position,
+                committedTargetPosition, // Use committed position for damage calculation
                 jumpAOERadius,
                 playerLayerMask
             );
             // Then check outer circle for reduced damage
             Collider2D[] outerTargets = Physics2D.OverlapCircleAll(
-                transform.position,
+                committedTargetPosition, // Use committed position for damage calculation
                 jumpOuterAOERadius,
                 playerLayerMask
             );
@@ -714,7 +780,7 @@ public class RobotBoss : MonoBehaviour
                         innerHitTargets.Add(target);
                         playerHit = true;
                         Debug.Log(
-                            $"Robot jump INNER AOE hit player! Dealt {jumpDamage} damage! (Inner Radius: {jumpAOERadius})"
+                            $"Robot jump INNER AOE hit player at committed landing position! Dealt {jumpDamage} damage! (Inner Radius: {jumpAOERadius})"
                         );
                     }
                 }
@@ -731,7 +797,7 @@ public class RobotBoss : MonoBehaviour
                         playerHealth.DealDamage((int)jumpOuterDamage);
                         playerHit = true;
                         Debug.Log(
-                            $"Robot jump OUTER AOE hit player! Dealt {jumpOuterDamage} damage! (Outer Radius: {jumpOuterAOERadius})"
+                            $"Robot jump OUTER AOE hit player at committed landing position! Dealt {jumpOuterDamage} damage! (Outer Radius: {jumpOuterAOERadius})"
                         );
                     }
                 }
@@ -740,7 +806,7 @@ public class RobotBoss : MonoBehaviour
             if (!playerHit)
             {
                 Debug.Log(
-                    $"Jump attack missed - no players within AOE (Inner: {jumpAOERadius}, Outer: {jumpOuterAOERadius})"
+                    $"Jump attack missed - no players within AOE at committed landing position (Inner: {jumpAOERadius}, Outer: {jumpOuterAOERadius})"
                 );
             }
         }
