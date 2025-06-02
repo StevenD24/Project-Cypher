@@ -30,7 +30,7 @@ public class PotionManager : MonoBehaviour
         if (playerHealth == null)
             playerHealth = GetComponent<PlayerHealth>();
         if (healthBar == null)
-            healthBar = FindObjectOfType<HealthBar>();
+            healthBar = FindFirstObjectByType<HealthBar>();
 
         // Initialize stats
         currentMana = maxMana;

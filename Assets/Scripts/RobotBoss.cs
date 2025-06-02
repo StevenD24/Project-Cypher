@@ -566,13 +566,11 @@ public class RobotBoss : MonoBehaviour
         Vector3 startPosition = transform.position;
         float originalY = startPosition.y; // Store the original Y position
 
-        // FIX: Commit to the player's position when jump starts - don't update during jump
         // ADVANCED PREDICTION: Account for dash mechanics and player behavior patterns
         Vector3 playerVelocity = Vector3.zero;
         Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
         Player playerScript = player.GetComponent<Player>();
         bool playerIsGrounded = true; // Default assumption
-        bool playerCanDash = true; // Default assumption
         bool playerIsDashing = false;
 
         if (playerRb != null)

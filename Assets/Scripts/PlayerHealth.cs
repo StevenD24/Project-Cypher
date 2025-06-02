@@ -21,6 +21,9 @@ public class PlayerHealth : MonoBehaviour
     public float pulseSpeed = 3f; // How fast to pulse (slower = more gentle)
     public Color tintColor = Color.white; // Pure white tint
 
+    [Header("Death Effect")]
+    public GameObject deathEffectPrefab; // Prefab to spawn when player dies
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -139,6 +142,13 @@ public class PlayerHealth : MonoBehaviour
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
+                // Instantiate death effect if available
+                if (deathEffectPrefab != null)
+                {
+                    Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+                    Debug.Log("Player death effect spawned!");
+                }
+
                 gameObject.SetActive(false);
             }
             else
