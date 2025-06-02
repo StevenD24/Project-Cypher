@@ -11,7 +11,11 @@ public class PlayerHealth : MonoBehaviour
     private float immortalCounter = 0f;
 
     // public GameObject immortalEffect; // Removed - using subtle transparency instead
-    public int healthPotionIncrement = 1;
+    public int healthPotionIncrement = 10;
+
+    [Header("Potion Pickup Effects")]
+    public GameObject potionPickupEffect; // Prefab to instantiate when picking up potion
+    public float effectDuration = 2f; // How long to keep the effect before destroying it
 
     // Visual components for immortality effect
     private SpriteRenderer spriteRenderer;
@@ -133,12 +137,38 @@ public class PlayerHealth : MonoBehaviour
         {
             AudioManager.instance.PlaySFX(2);
             immortalCounter = immortalTime + 2;
+
+            // Instantiate pickup effect if available
+            if (potionPickupEffect != null)
+            {
+                GameObject effect = Instantiate(
+                    potionPickupEffect,
+                    transform.position,
+                    Quaternion.identity
+                );
+                effect.transform.SetParent(transform); // Make effect follow player
+                Destroy(effect, effectDuration);
+            }
+
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Health Potion")
         {
             AudioManager.instance.PlaySFX(1);
+
+            // Instantiate pickup effect at player position and make it follow
+            if (potionPickupEffect != null)
+            {
+                GameObject effect = Instantiate(
+                    potionPickupEffect,
+                    transform.position,
+                    Quaternion.identity
+                );
+                effect.transform.SetParent(transform); // Make effect follow player
+                Destroy(effect, effectDuration);
+            }
+
             if (currentHealth < maxHealth)
             {
                 currentHealth += healthPotionIncrement;

@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9907466}
+  - component: {fileID: 9907467}
   m_Layer: 0
   m_Name: HealthPotions
   m_TagString: Untagged
@@ -152,6 +153,28 @@ Transform:
   - {fileID: 814540322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9907467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9907465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb05058ca13b4985af70f3e628496aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableBobbing: 1
+  bobbingHeight: 0.05
+  bobbingPeriod: 2.5
+  enableGlowPulse: 1
+  pulseSpeed: 2
+  glowTint: {r: 1, g: 0.9, b: 0.9, a: 1}
+  glowIntensityMin: 0.8
+  glowIntensityMax: 1.3
+  enableRotation: 0
+  rotationSpeed: 5
 --- !u!1 &18957893
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 118842128}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.191648, y: -0.0800004, z: -10}
+  m_LocalPosition: {x: -10.118391, y: -0.07999992, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2950,6 +2973,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxAirJumps: 1
+  dashSpeed: 15
+  dashDuration: 0.15
+  dashCooldown: 1
 --- !u!95 &535057896
 Animator:
   serializedVersion: 7
@@ -2989,7 +3015,9 @@ MonoBehaviour:
   damageAmount: 10
   healthBar: {fileID: 107090670}
   immortalTime: 2
-  healthPotionIncrement: 1
+  healthPotionIncrement: 10
+  potionPickupEffect: {fileID: 3802302459956397560, guid: b3416c8b2e3c7804b8c061dc4a36fc43, type: 3}
+  effectDuration: 2
   pulseSpeed: 8
   tintColor: {r: 1, g: 0.8, b: 0.8, a: 1}
 --- !u!114 &535057898
@@ -3315,6 +3343,7 @@ GameObject:
   - component: {fileID: 814540322}
   - component: {fileID: 814540324}
   - component: {fileID: 814540323}
+  - component: {fileID: 814540325}
   m_Layer: 0
   m_Name: HealthPotion1
   m_TagString: Health Potion
@@ -3429,6 +3458,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &814540325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814540321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc6c2d944a9b43f080cbfde3c51b85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatAmplitude: 0.15
+  floatFrequency: 1.2
+  usePerlinNoise: 1
+  enableBreathing: 1
+  breatheAmplitude: 0.03
+  breatheFrequency: 0.8
+  enableRotation: 0
+  rotationSpeed: 10
+  enableMagnetism: 1
+  magnetRange: 2.5
+  magnetStrength: 2
+  playerTag: Player
+  enableGlow: 1
+  glowIntensity: 0.2
+  glowSpeed: 1.5
+  glowColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.3
+  startPosition: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
+  timeOffset: 0
+  spriteRenderer: {fileID: 0}
+  originalColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  isBeingAttracted: 0
 --- !u!1 &820926468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3601,7 @@ Transform:
   m_GameObject: {fileID: 820926468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.191648, y: -0.0800004, z: -10}
+  m_LocalPosition: {x: -10.118391, y: -0.07999992, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8891,6 +8962,7 @@ GameObject:
   - component: {fileID: 1003352719}
   - component: {fileID: 1003352721}
   - component: {fileID: 1003352720}
+  - component: {fileID: 1003352722}
   m_Layer: 0
   m_Name: Coin (2)
   m_TagString: Coin
@@ -9005,6 +9077,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1003352722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003352718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d68f315f745a45b7bcf75e09ea78b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 1
+  bobbingHeight: 0.1
+  randomOffset: 0
+  enableRotation: 1
+  rotationSpeed: 10
 --- !u!1 &1036607972
 GameObject:
   m_ObjectHideFlags: 0
@@ -9517,6 +9606,7 @@ GameObject:
   - component: {fileID: 1081836650}
   - component: {fileID: 1081836652}
   - component: {fileID: 1081836651}
+  - component: {fileID: 1081836653}
   m_Layer: 0
   m_Name: Coin (1)
   m_TagString: Coin
@@ -9631,6 +9721,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1081836653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081836649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d68f315f745a45b7bcf75e09ea78b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 1
+  bobbingHeight: 0.1
+  randomOffset: 0
+  enableRotation: 1
+  rotationSpeed: 10
 --- !u!1 &1092114896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10190,7 +10297,7 @@ Transform:
   m_GameObject: {fileID: 1167174707}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1334603, y: -4.3834, z: 0}
+  m_LocalPosition: {x: -2.1334603, y: -4.351, z: 0}
   m_LocalScale: {x: 0.21828151, y: 0.21828151, z: 0.21828151}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10651,6 +10758,7 @@ GameObject:
   - component: {fileID: 1209501790}
   - component: {fileID: 1209501789}
   - component: {fileID: 1209501788}
+  - component: {fileID: 1209501791}
   m_Layer: 0
   m_Name: HealthPotion
   m_TagString: Health Potion
@@ -10759,12 +10867,54 @@ Transform:
   m_GameObject: {fileID: 1209501787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.94, y: -4.358, z: 0}
+  m_LocalPosition: {x: 84.79, y: -4.313, z: 0}
   m_LocalScale: {x: 0.2182815, y: 0.2182815, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9907466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1209501791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209501787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc6c2d944a9b43f080cbfde3c51b85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatAmplitude: 0.15
+  floatFrequency: 1.2
+  usePerlinNoise: 1
+  enableBreathing: 1
+  breatheAmplitude: 0.03
+  breatheFrequency: 0.8
+  enableRotation: 0
+  rotationSpeed: 10
+  enableMagnetism: 1
+  magnetRange: 2.5
+  magnetStrength: 2
+  playerTag: Player
+  enableGlow: 1
+  glowIntensity: 0.2
+  glowSpeed: 1.5
+  glowColor:
+    r: 1
+    g: 1
+    b: 1
+    a: 0.3
+  startPosition: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
+  timeOffset: 0
+  spriteRenderer: {fileID: 0}
+  originalColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  isBeingAttracted: 0
 --- !u!1 &1245332684
 GameObject:
   m_ObjectHideFlags: 0
@@ -10774,6 +10924,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245332685}
+  - component: {fileID: 1245332686}
+  - component: {fileID: 1245332687}
+  - component: {fileID: 1245332688}
   m_Layer: 0
   m_Name: ImmortalBonuses
   m_TagString: Untagged
@@ -10797,6 +10950,76 @@ Transform:
   - {fileID: 1167174710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1245332686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245332684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8708e61440b754713bde747f177d0d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableRotation: 1
+  rotationSpeed: 90
+  enablePulse: 1
+  pulseAmount: 0.1
+  pulseSpeed: 2
+  enableAttraction: 1
+  attractionDistance: 1.2
+  attractionSpeed: 4
+  playerTag: Player
+  originalScale: {x: 0, y: 0, z: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  timeOffset: 0
+  isMovingToPlayer: 0
+--- !u!114 &1245332687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245332684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb05058ca13b4985af70f3e628496aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableBobbing: 1
+  bobbingHeight: 0.05
+  bobbingPeriod: 2.5
+  enableGlowPulse: 1
+  pulseSpeed: 2
+  glowTint: {r: 1, g: 1, b: 1, a: 1}
+  glowIntensityMin: 0.8
+  glowIntensityMax: 1.2
+  enableRotation: 0
+  rotationSpeed: 3
+--- !u!114 &1245332688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245332684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 681b42e3968954d92bf5365cdc98dea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 0}
+  createSimpleParticles: 1
+  maxParticles: 8
+  particleLifetime: 2
+  emissionRate: 0.5
+  particleSpeed: 0.3
+  particleRange: 0.5
+  particleScaleRange: {x: 0.1, y: 0.3}
+  particleStartColor: {r: 1, g: 1, b: 1, a: 0.8}
+  particleEndColor: {r: 1, g: 1, b: 1, a: 0}
+  particleSprite: {fileID: 0}
 --- !u!1 &1323313812
 GameObject:
   m_ObjectHideFlags: 0
@@ -11894,6 +12117,7 @@ GameObject:
   - component: {fileID: 1765898684}
   - component: {fileID: 1765898683}
   - component: {fileID: 1765898682}
+  - component: {fileID: 1765898685}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -12008,6 +12232,23 @@ Transform:
   - {fileID: 1140773352}
   m_Father: {fileID: 1861057991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1765898685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765898681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d68f315f745a45b7bcf75e09ea78b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 1
+  bobbingHeight: 0.1
+  randomOffset: 0
+  enableRotation: 1
+  rotationSpeed: 10
 --- !u!1 &1766020903
 GameObject:
   m_ObjectHideFlags: 0
