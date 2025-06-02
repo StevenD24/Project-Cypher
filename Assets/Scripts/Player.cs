@@ -130,16 +130,14 @@ public class Player : MonoBehaviour
 
     private void HandleDashInput()
     {
-        // Check for dash input (Q for left, E for right) - only when not grounded (in air)
+        // Check for dash input (E key only) - dash in player's facing direction, only when not grounded (in air)
         if (canDash && !isDashing && !isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                StartDash(-1); // Dash left
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartDash(1); // Dash right
+                // Dash in the direction the player is facing
+                int dashDirection = isFacingRight ? 1 : -1;
+                StartDash(dashDirection);
             }
         }
     }
