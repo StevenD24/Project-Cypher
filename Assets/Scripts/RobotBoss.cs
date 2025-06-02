@@ -26,6 +26,7 @@ public class RobotBoss : MonoBehaviour
 
     [Header("Jump Attack Settings")]
     public GameObject jumpEffectPrefab; // Drag your jump effect prefab here
+    private int jumpLandingSFXIndex = 7; // Index in AudioManager sound effects array for landing sound
     public float jumpSpeed = 10f;
     public float jumpDamage = 30f;
     public float jumpRange = 15f; // Maximum range for jump attack
@@ -742,6 +743,21 @@ public class RobotBoss : MonoBehaviour
         {
             Instantiate(jumpEffectPrefab, transform.position, Quaternion.identity);
             Debug.Log("Landing effect instantiated!");
+        }
+
+        // Play landing sound effect
+        if (
+            AudioManager.instance != null
+            && jumpLandingSFXIndex >= 0
+            && jumpLandingSFXIndex < AudioManager.instance.soundEffects.Length
+        )
+        {
+            AudioManager.instance.PlaySFX(jumpLandingSFXIndex);
+            Debug.Log("Landing sound effect played!");
+        }
+        else
+        {
+            Debug.LogWarning("Jump landing SFX index not valid or AudioManager not found!");
         }
 
         // FIX: Deal damage based on the committed landing position, not robot's final position

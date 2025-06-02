@@ -145,6 +145,7 @@ public class PlayerHealth : MonoBehaviour
                 // Instantiate death effect if available
                 if (deathEffectPrefab != null)
                 {
+                    AudioManager.instance.PlaySFX(8);
                     Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
                     Debug.Log("Player death effect spawned!");
                 }
