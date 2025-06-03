@@ -1121,6 +1121,18 @@ public class RobotBoss : MonoBehaviour
             Debug.Log("Boss defeated - returning to normal music!");
         }
 
+        // Trigger item drops
+        BossDropSystem dropSystem = GetComponent<BossDropSystem>();
+        if (dropSystem != null)
+        {
+            dropSystem.TriggerItemDrops();
+            Debug.Log("Boss drops triggered!");
+        }
+        else
+        {
+            Debug.LogWarning("No BossDropSystem found on boss - no items will drop!");
+        }
+
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
 
