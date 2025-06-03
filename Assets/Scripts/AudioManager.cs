@@ -9,6 +9,9 @@ public class AudioManager : MonoBehaviour
     public GameObject normalBGMPrefab;
     public GameObject bossBGMPrefab;
 
+    [Header("Audio Controls")]
+    public bool isMusicMuted = false;
+
     public static AudioManager instance;
 
     private bool isBossMusicPlaying = false;
@@ -22,7 +25,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         // Start playing normal background music
-        if (normalBGMPrefab != null)
+        if (normalBGMPrefab != null && !isMusicMuted)
         {
             PlayNormalBGM();
         }
@@ -38,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBossBGM()
     {
-        if (bossBGMPrefab != null && !isBossMusicPlaying)
+        if (bossBGMPrefab != null && !isBossMusicPlaying && !isMusicMuted)
         {
             // Stop and destroy current music
             if (currentMusicObject != null)
@@ -62,7 +65,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayNormalBGM()
     {
-        if (normalBGMPrefab != null)
+        if (normalBGMPrefab != null && !isMusicMuted)
         {
             // Stop and destroy current music
             if (currentMusicObject != null)
@@ -84,9 +87,58 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // New methods for muting/unmuting music
+    public void MuteMusic()
+    {
+        isMusicMuted = true;
+        if (currentMusicObject != null)
+        {
+            AudioSource audioSource = currentMusicObject.GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                audioSource.Stop();
+            }
+            Destroy(currentMusicObject);
+            currentMusicObject = null;
+        }
+        Debug.Log("Background music muted!");
+    }
+
+    public void UnmuteMusic()
+    {
+        isMusicMuted = false;
+        // Resume appropriate music based on current state
+        if (isBossMusicPlaying)
+        {
+            PlayBossBGM();
+        }
+        else
+        {
+            PlayNormalBGM();
+        }
+        Debug.Log("Background music unmuted!");
+    }
+
+    public void ToggleMusic()
+    {
+        if (isMusicMuted)
+        {
+            UnmuteMusic();
+        }
+        else
+        {
+            MuteMusic();
+        }
+    }
+
     public bool IsBossMusicPlaying()
     {
         return isBossMusicPlaying;
+    }
+
+    public bool IsMusicMuted()
+    {
+        return isMusicMuted;
     }
 
     private void OnDestroy()
